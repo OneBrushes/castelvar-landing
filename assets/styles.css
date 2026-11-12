@@ -1060,6 +1060,293 @@ details p {
     padding: 24px;
   }
 }
+/* ===================== Móvil ===================== */
+.mobile-bar {
+  display: none;
+}
+@media (max-width: 640px) {
+  body {
+    /* hueco para la barra fija inferior (con la zona segura del iPhone) */
+    padding-bottom: calc(68px + env(safe-area-inset-bottom));
+  }
+  html {
+    scroll-padding-top: 64px;
+  }
+  .header-inner {
+    height: 60px;
+  }
+  .site-header .btn-sm {
+    padding: 10px 14px;
+    font-size: 13.5px;
+  }
+  .topbar-inner {
+    min-height: 40px;
+  }
+  .topbar-links a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    font-size: 13.5px;
+  }
+
+  /* Hero: titular, una frase y el formulario dentro de la primera pantalla; las ventajas, después */
+  .hero {
+    padding: 22px 0 36px;
+  }
+  .hero-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .hero-copy {
+    display: contents;
+  }
+  .eyebrow {
+    order: 1;
+    font-size: 11.5px;
+    margin-bottom: 8px;
+  }
+  .hero h1 {
+    order: 2;
+    font-size: 1.85rem;
+    margin-bottom: 10px;
+  }
+  .lead {
+    order: 3;
+    font-size: 1rem;
+    margin-bottom: 18px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .quote-card {
+    order: 4;
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+  .hero-checks {
+    order: 5;
+    margin-top: 22px;
+    font-size: 15px;
+  }
+  .hero-trust {
+    order: 6;
+  }
+  .quote-head h2 {
+    font-size: 1.3rem;
+  }
+  .quote-head p {
+    font-size: 13.5px;
+    margin-bottom: 12px;
+  }
+  .progress {
+    margin-bottom: 16px;
+  }
+  .choice-grid {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .choice span {
+    padding: 12px 10px;
+    font-size: 14px;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  /* 16 px en los campos: si no, el iPhone hace zoom al tocarlos */
+  #lead-form input,
+  #lead-form select,
+  #lead-form textarea {
+    font-size: 16px;
+    min-height: 48px;
+  }
+  #lead-form textarea {
+    min-height: 88px;
+  }
+  .sizes button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+  .step-nav .btn,
+  .quote-card .btn-block {
+    min-height: 50px;
+  }
+  #lead-form label.check {
+    padding: 6px 0;
+    font-size: 14px;
+  }
+  #lead-form label.check input {
+    width: 24px;
+    height: 24px;
+    min-height: 24px;
+    margin-top: 0;
+  }
+
+  /* Secciones más compactas */
+  .section {
+    padding: 48px 0;
+  }
+  h2 {
+    font-size: 1.55rem;
+  }
+  .section-lead {
+    font-size: 1rem;
+    margin-bottom: 22px;
+  }
+  .assurances-inner div {
+    padding: 14px 12px;
+  }
+  .assurances strong {
+    font-size: 0.98rem;
+  }
+  .assurances span {
+    font-size: 13px;
+  }
+
+  /* Tarjetas en carrusel horizontal (se desliza con el dedo) */
+  .cards,
+  .projects,
+  .testimonials {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 14px;
+    margin-inline: -16px;
+    padding: 4px 16px 14px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cards::-webkit-scrollbar,
+  .projects::-webkit-scrollbar,
+  .testimonials::-webkit-scrollbar {
+    display: none;
+  }
+  .card,
+  .project,
+  .testimonial {
+    flex: 0 0 84%;
+    scroll-snap-align: start;
+  }
+  .card:hover {
+    transform: none;
+  }
+  .card-body {
+    padding: 18px;
+  }
+  .link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+  }
+  .also {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .tech {
+    gap: 28px;
+  }
+  .spec-card {
+    padding: 20px;
+  }
+  .spec-card dl div {
+    font-size: 14px;
+  }
+  .steps li {
+    padding-bottom: 16px;
+  }
+  .licence {
+    gap: 10px;
+  }
+  summary {
+    padding: 15px 28px 15px 0;
+    min-height: 52px;
+    position: relative;
+  }
+  summary::after {
+    position: absolute;
+    right: 0;
+    top: 14px;
+  }
+
+  .final-cta {
+    padding: 40px 0;
+  }
+  .final-actions,
+  .final-actions .btn {
+    width: 100%;
+  }
+  .final-actions .btn {
+    min-height: 50px;
+  }
+
+  .site-footer {
+    padding-top: 40px;
+  }
+  .footer-grid {
+    gap: 22px;
+  }
+  .footer-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+  }
+
+  /* Barra fija inferior: llamar · WhatsApp · presupuesto */
+  .mobile-bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 70;
+    display: flex;
+    gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgb(255 255 255 / 97%);
+    backdrop-filter: blur(8px);
+    border-top: 1px solid var(--line);
+    box-shadow: 0 -6px 20px rgb(16 24 40 / 8%);
+    transform: translateY(110%);
+    transition: transform 0.25s;
+  }
+  .mobile-bar.show {
+    transform: none;
+  }
+  .mobile-bar[hidden] {
+    display: none !important;
+  }
+  .mobile-bar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 12px;
+    text-decoration: none;
+    font: 700 12.5px/1.2 Inter, sans-serif;
+  }
+  .mb-btn {
+    flex: 0 0 74px;
+    color: var(--blue);
+    background: var(--bg-alt);
+    gap: 2px;
+  }
+  .mb-btn span {
+    font-size: 17px;
+  }
+  .mb-primary {
+    flex: 1;
+    background: var(--accent);
+    color: #fff;
+    font-size: 15px !important;
+  }
+  /* Con la barra, el botón flotante de WhatsApp sobra */
+  .wa-float {
+    display: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;

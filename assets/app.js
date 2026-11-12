@@ -77,6 +77,36 @@
       el.hidden = true;
     });
   }
+  // ---------- Barra fija inferior (móvil) ----------
+  var mobileBar = $("#mobile-bar");
+  if (phone) {
+    $("#mb-call").href = "tel:" + tel;
+    $("#mb-call").hidden = false;
+  }
+  if (wa) {
+    $("#mb-wa").href = waUrl;
+    $("#mb-wa").hidden = false;
+  }
+  mobileBar.hidden = false;
+  // Solo se muestra cuando el formulario NO está a la vista (para no taparlo)
+  var card = $("#presupuesto");
+  var ticking = false;
+  function updateBar() {
+    ticking = false;
+    var r = card.getBoundingClientRect();
+    var visible = r.bottom > 80 && r.top < window.innerHeight - 80;
+    mobileBar.classList.toggle("show", !visible);
+  }
+  function onScroll() {
+    if (!ticking) {
+      ticking = true;
+      requestAnimationFrame(updateBar);
+    }
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onScroll);
+  updateBar();
+
   var testimonials = Array.isArray(cfg.testimonials) ? cfg.testimonials.filter(function (t) { return t && t.text && t.name; }) : [];
   if (testimonials.length) {
     $("#testimonials").innerHTML = testimonials
@@ -137,6 +167,11 @@
     status.className = "form-status";
     var first = $('[data-step="' + n + '"] input:not([type=radio]):not(.hp input), [data-step="' + n + '"] select', form);
     if (n > 1 && first && window.innerWidth > 640) first.focus({ preventScroll: true });
+    // En el móvil, al cambiar de paso, el formulario vuelve a quedar arriba de la pantalla
+    if (window.innerWidth <= 640) {
+      var card = $("#presupuesto");
+      if (card.getBoundingClientRect().top < 56) card.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
   form.addEventListener("click", function (e) {
     var t = e.target;
