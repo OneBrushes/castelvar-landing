@@ -4,7 +4,7 @@ window.CASTELVAR = {
   // Dirección de la app que recibe las solicitudes
   apiUrl: "https://app.castelvar.workers.dev/api/leads",
   // Ajustes → Formulario web → "Clave del formulario"
-  formKey: "PEGAR_AQUI_LA_CLAVE",
+  formKey: "d2a1e30fe733c50eb23db9cc",
   // Datos de contacto que se muestran en la web (déjalos vacíos para ocultarlos)
   email: "",
   phone: "", // p. ej. "+34 600 000 000"
