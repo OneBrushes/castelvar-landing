@@ -236,11 +236,16 @@ a {
   opacity: 0.28;
 }
 .hero-bg:not(.has-photo) {
-  /* Silueta de naves (decorativa) mientras no haya foto propia */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 400'%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='2' opacity='.5'%3E%3Cpath d='M40 380V250l180-80 180 80v130M220 170v210M100 223v157M340 223v157'/%3E%3Cpath d='M700 380V230l220-100 220 100v150M920 130v250M780 194v186M1060 194v186'/%3E%3Cpath d='M0 380h1200'/%3E%3C/g%3E%3C/svg%3E");
-  background-position: center bottom;
-  background-repeat: no-repeat;
-  background-size: 100% auto;
+  /* Foto de portada con velo azul para que el texto se lea */
+  opacity: 1;
+  background-image: linear-gradient(90deg, rgba(16, 33, 56, 0.95) 0%, rgba(16, 33, 56, 0.8) 42%, rgba(16, 33, 56, 0.35) 100%),
+    url("../img/hero-carpa-1376.webp");
+  background-position: center, 85% 30%;
+}
+@media (max-width: 960px) {
+  .hero-bg:not(.has-photo) {
+    background-image: linear-gradient(180deg, rgba(16, 33, 56, 0.9) 0%, rgba(16, 33, 56, 0.86) 100%), url("../img/hero-carpa-800.webp");
+  }
 }
 .hero-inner {
   position: relative;
@@ -578,16 +583,6 @@ a {
   aspect-ratio: 16 / 9;
   background: var(--blue-50) center/cover no-repeat;
 }
-/* Ilustraciones mientras no haya fotos propias */
-.media-warehouse {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23e6edf5'/%3E%3Cpath d='M0 150h320' stroke='%23c3cfdc' stroke-width='2'/%3E%3Cpath d='M60 150V80l100-45 100 45v70Z' fill='white' stroke='%231F3A5F' stroke-width='4' stroke-linejoin='round'/%3E%3Crect x='130' y='95' width='60' height='55' fill='%23dfe7f0' stroke='%231F3A5F' stroke-width='3'/%3E%3Cpath d='M130 107h60M130 119h60M130 131h60' stroke='%23b6c4d4' stroke-width='2'/%3E%3Crect x='80' y='126' width='30' height='24' fill='%23D9662B' opacity='.85'/%3E%3Crect x='205' y='132' width='26' height='18' fill='%231F3A5F' opacity='.3'/%3E%3C/svg%3E");
-}
-.media-industry {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23e6edf5'/%3E%3Cpath d='M0 150h320' stroke='%23c3cfdc' stroke-width='2'/%3E%3Cpath d='M40 150V70h240v80Z' fill='white' stroke='%231F3A5F' stroke-width='4'/%3E%3Cpath d='M40 70l40-28 40 28 40-28 40 28 40-28 40 28' fill='none' stroke='%231F3A5F' stroke-width='4' stroke-linejoin='round'/%3E%3Crect x='70' y='100' width='50' height='50' fill='%23dfe7f0' stroke='%231F3A5F' stroke-width='3'/%3E%3Crect x='200' y='100' width='50' height='50' fill='%23dfe7f0' stroke='%231F3A5F' stroke-width='3'/%3E%3Ccircle cx='160' cy='110' r='10' fill='%23D9662B'/%3E%3C/svg%3E");
-}
-.media-agro {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23e6edf5'/%3E%3Cpath d='M0 150h320' stroke='%23c3cfdc' stroke-width='2'/%3E%3Cpath d='M50 150V95a110 70 0 0 1 220 0v55Z' fill='white' stroke='%231F3A5F' stroke-width='4'/%3E%3Cpath d='M105 150V60M160 150V48M215 150V60' stroke='%23c3cfdc' stroke-width='2'/%3E%3Ccircle cx='110' cy='132' r='18' fill='%23D9662B' opacity='.85'/%3E%3Ccircle cx='150' cy='132' r='18' fill='%23D9662B' opacity='.65'/%3E%3Ccircle cx='130' cy='104' r='18' fill='%23D9662B' opacity='.75'/%3E%3C/svg%3E");
-}
 .card-media {
   display: block;
   width: 100%;
@@ -612,6 +607,141 @@ a {
 }
 .showcase .tech-list {
   margin-bottom: 28px;
+}
+/* Foto de la ficha técnica */
+.spec-photo {
+  margin: -26px -26px 22px;
+}
+.spec-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.spec-photo figcaption,
+.wide-photo figcaption,
+.gallery figcaption {
+  font-size: 13.5px;
+  color: var(--muted);
+  padding: 8px 26px 0;
+}
+/* Foto ancha (montaje) */
+.wide-photo {
+  margin: 48px 0 32px;
+}
+.wide-photo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 21 / 8;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.wide-photo figcaption {
+  padding: 10px 0 0;
+}
+/* Antes / después */
+.compare {
+  position: relative;
+  margin-top: 32px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 1376 / 768;
+  box-shadow: 0 18px 40px rgba(15, 30, 50, 0.16);
+  user-select: none;
+}
+.compare img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.compare-before {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+}
+.compare-handle {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 3px;
+  margin-left: -1.5px;
+  background: #fff;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.35);
+  pointer-events: none;
+}
+.compare-handle::after {
+  content: "‹ ›";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--blue);
+  font-size: 22px;
+  font-weight: 700;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+.compare-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+}
+.compare-range:focus-visible ~ .compare-handle,
+.compare:has(.compare-range:focus-visible) .compare-handle {
+  outline: 3px solid var(--accent);
+}
+.compare-tag {
+  position: absolute;
+  top: 14px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(16, 33, 56, 0.75);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  pointer-events: none;
+}
+.compare-tag-l {
+  left: 14px;
+}
+.compare-tag-r {
+  right: 14px;
+}
+/* Galería de aplicaciones */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 32px;
+}
+.gallery figure {
+  margin: 0;
+}
+.gallery img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+.gallery figcaption {
+  padding: 8px 2px 0;
+  font-weight: 600;
+  color: var(--blue);
 }
 .card-body {
   padding: 22px 22px 24px;
@@ -1009,7 +1139,8 @@ details p {
   }
   .cards,
   .projects,
-  .testimonials {
+  .testimonials,
+  .gallery {
     grid-template-columns: 1fr 1fr;
   }
   .assurances-inner {
@@ -1071,6 +1202,7 @@ details p {
   .cards,
   .projects,
   .testimonials,
+  .gallery,
   .grid-2,
   .footer-grid {
     grid-template-columns: 1fr;

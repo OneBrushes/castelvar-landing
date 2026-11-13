@@ -77,6 +77,14 @@
       el.hidden = true;
     });
   }
+  // ---------- Comparador antes / después ----------
+  var compare = $("#compare");
+  if (compare) {
+    var range = compare.querySelector(".compare-range");
+    range.addEventListener("input", function () {
+      compare.style.setProperty("--pos", range.value + "%");
+    });
+  }
   // ---------- Barra fija inferior (móvil) ----------
   var mobileBar = $("#mobile-bar");
   if (phone) {
