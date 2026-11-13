@@ -588,6 +588,31 @@ a {
 .media-agro {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 180'%3E%3Crect width='320' height='180' fill='%23e6edf5'/%3E%3Cpath d='M0 150h320' stroke='%23c3cfdc' stroke-width='2'/%3E%3Cpath d='M50 150V95a110 70 0 0 1 220 0v55Z' fill='white' stroke='%231F3A5F' stroke-width='4'/%3E%3Cpath d='M105 150V60M160 150V48M215 150V60' stroke='%23c3cfdc' stroke-width='2'/%3E%3Ccircle cx='110' cy='132' r='18' fill='%23D9662B' opacity='.85'/%3E%3Ccircle cx='150' cy='132' r='18' fill='%23D9662B' opacity='.65'/%3E%3Ccircle cx='130' cy='104' r='18' fill='%23D9662B' opacity='.75'/%3E%3C/svg%3E");
 }
+.card-media {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+/* Bloque destacado con foto grande (ganadería) */
+.showcase {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 56px;
+  align-items: center;
+}
+.showcase-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: 0 18px 40px rgba(15, 30, 50, 0.16);
+}
+.showcase .tech-list {
+  margin-bottom: 28px;
+}
 .card-body {
   padding: 22px 22px 24px;
   display: flex;
@@ -977,7 +1002,8 @@ details p {
 }
 @media (max-width: 960px) {
   .hero-inner,
-  .tech {
+  .tech,
+  .showcase {
     grid-template-columns: 1fr;
     gap: 36px;
   }

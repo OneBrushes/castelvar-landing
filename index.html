@@ -203,7 +203,16 @@
               </div>
             </article>
             <article class="card">
-              <div class="card-media media-agro" aria-hidden="true"></div>
+              <img
+                class="card-media"
+                src="img/ganaderia-exterior-800.webp"
+                srcset="img/ganaderia-exterior-800.webp 800w, img/ganaderia-exterior-1600.webp 1600w"
+                sizes="(max-width: 960px) 100vw, 380px"
+                width="800"
+                height="447"
+                loading="lazy"
+                alt="Carpa ganadera blanca de arco con terneros en la entrada"
+              />
               <div class="card-body">
                 <h3>Carpas agrícolas y ganaderas</h3>
                 <p>Cobertizos para maquinaria, paja y forraje, y naves ventiladas para ganado.</p>
@@ -217,8 +226,36 @@
         </div>
       </section>
 
+      <!-- GANADERÍA (destacado con foto) -->
+      <section class="section section-alt" id="ganaderia">
+        <div class="wrap showcase">
+          <img
+            class="showcase-img"
+            src="img/ganaderia-interior-1600.webp"
+            srcset="img/ganaderia-interior-800.webp 800w, img/ganaderia-interior-1600.webp 1600w"
+            sizes="(max-width: 960px) 100vw, 640px"
+            width="1600"
+            height="893"
+            loading="lazy"
+            alt="Interior de una carpa ganadera con terneros sobre cama de paja, comederos laterales y lucernario cenital"
+          />
+          <div>
+            <p class="kicker">Ganadería</p>
+            <h2>Naves para terneros y ganado</h2>
+            <p class="section-lead">Un espacio amplio, luminoso y ventilado, montado en días y sin obra.</p>
+            <ul class="tech-list">
+              <li><strong>Luz natural</strong><span>Lucernario cenital y ventanas laterales para un interior claro durante el día.</span></li>
+              <li><strong>Ventilación</strong><span>Rejillas en los testeros y ventanas practicables para renovar el aire.</span></li>
+              <li><strong>Sin pilares interiores</strong><span>El arco deja toda la superficie libre para corrales, comederos y paso de maquinaria.</span></li>
+              <li><strong>Ampliable</strong><span>Añade módulos de largo cuando crezca la explotación.</span></li>
+            </ul>
+            <a href="#presupuesto" class="btn btn-primary" data-usecase="Agricultura / ganadería">Presupuesto para mi explotación</a>
+          </div>
+        </div>
+      </section>
+
       <!-- TÉCNICA -->
-      <section id="tecnica" class="section section-alt">
+      <section id="tecnica" class="section">
         <div class="wrap tech">
           <div>
             <p class="kicker">Técnica</p>
@@ -252,7 +289,7 @@
       </section>
 
       <!-- PROCESO -->
-      <section id="proceso" class="section">
+      <section id="proceso" class="section section-alt">
         <div class="wrap">
           <p class="kicker">Cómo trabajamos</p>
           <h2>De la idea a la carpa montada</h2>
@@ -268,7 +305,7 @@
       </section>
 
       <!-- LICENCIAS -->
-      <section class="section section-alt">
+      <section class="section">
         <div class="wrap licence">
           <div class="licence-icon" aria-hidden="true">📋</div>
           <div>
