@@ -9,4 +9,11 @@ solo contiene esta carpeta (aquí no hay nada secreto).
 - La app solo acepta envíos desde las webs de `LEADS_ALLOWED_ORIGINS` (`wrangler.jsonc`). Si cambias de dominio, añádelo ahí.
 - Campañas: los enlaces con `?utm_source=…&utm_medium=…&utm_campaign=…` (o `gclid` de Google Ads) quedan guardados en cada solicitud.
 
+- **Idiomas** (español, catalán, francés, inglés): `assets/i18n.js`. Se elige solo según el idioma del dispositivo y se
+  puede cambiar en el pie (se recuerda en el navegador). Enlaces directos: `?lang=ca`, `?lang=fr`, `?lang=en` (útil en
+  campañas). El español está en `index.html`; si cambias o añades un texto, márcalo con `data-i18n="clave"` y añade la
+  clave en las otras tres lenguas de `i18n.js` (si falta, se muestra en español). Los valores que llegan a la app (uso,
+  plazo, provincia) siguen en español; si el visitante usa otro idioma, el mensaje de la solicitud empieza por
+  `[Idioma de la web: …]`. Las páginas legales están solo en español.
+
 Publicar cambios: `npm run landing:publish` (desde la raíz del proyecto).
