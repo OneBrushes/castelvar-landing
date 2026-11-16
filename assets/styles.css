@@ -1377,6 +1377,14 @@ details p {
     font-size: 11.5px;
     margin-bottom: 8px;
   }
+  /* En móvil «Nos encargamos de todo» va en su propia línea */
+  .eyebrow .eb-sep {
+    display: none;
+  }
+  .eyebrow .eb-2 {
+    display: block;
+    margin-top: 2px;
+  }
   .hero h1 {
     order: 2;
     font-size: 1.85rem;

@@ -45,7 +45,7 @@
     },
 
     ca: {
-      "meta.title": "Castelvar · Carpes i naus industrials a Catalunya",
+      "meta.title": "Castelvar · Carpes i naus industrials, ens encarreguem de tot",
       "meta.desc": "Carpes d'alumini i naus tèxtils per a magatzem, indústria i agricultura. Enginyers, càlcul segons l'Eurocodi, transport i muntatge amb preu tancat. Demana pressupost sense compromís.",
       "meta.ogdesc": "Enginyeria, fabricació, transport i muntatge amb preu tancat. Demana pressupost sense compromís.",
       skip: "Anar al formulari de pressupost",
@@ -58,7 +58,7 @@
       "nav.projects": "Obres",
       "nav.faq": "Preguntes",
       "cta.quote": "Demana pressupost",
-      "hero.eyebrow": "Carpes i naus industrials a Catalunya",
+      "hero.eyebrow": "Carpes i naus industrials<span class=\"eb-sep\"> · </span><span class=\"eb-2\">Ens encarreguem de tot</span>",
       "hero.title": "Més espai cobert, sense obra i amb <span>preu tancat</span>",
       "hero.lead": "Som enginyers. Calculem, subministrem, transportem i muntem carpes d'alumini i naus tèxtils per a magatzem, indústria i agricultura a tot Catalunya.",
       "hero.q1": "Enginyers especialitzats",
@@ -261,7 +261,7 @@
     },
 
     fr: {
-      "meta.title": "Castelvar · Tentes et bâtiments industriels en Catalogne",
+      "meta.title": "Castelvar · Tentes et bâtiments industriels, nous nous occupons de tout",
       "meta.desc": "Tentes en aluminium et bâtiments textiles pour le stockage, l'industrie et l'agriculture. Ingénieurs, calcul selon l'Eurocode, transport et montage à prix ferme. Demandez un devis sans engagement.",
       "meta.ogdesc": "Ingénierie, fabrication, transport et montage à prix ferme. Demandez un devis sans engagement.",
       skip: "Aller au formulaire de devis",
@@ -274,7 +274,7 @@
       "nav.projects": "Réalisations",
       "nav.faq": "FAQ",
       "cta.quote": "Demander un devis",
-      "hero.eyebrow": "Tentes et bâtiments industriels en Catalogne",
+      "hero.eyebrow": "Tentes et bâtiments industriels<span class=\"eb-sep\"> · </span><span class=\"eb-2\">Nous nous occupons de tout</span>",
       "hero.title": "Plus d'espace couvert, sans travaux et à <span>prix ferme</span>",
       "hero.lead": "Nous sommes ingénieurs. Nous calculons, fournissons, transportons et montons des tentes en aluminium et des bâtiments textiles pour le stockage, l'industrie et l'agriculture dans toute la Catalogne.",
       "hero.q1": "Ingénieurs spécialisés",
@@ -477,7 +477,7 @@
     },
 
     en: {
-      "meta.title": "Castelvar · Industrial tents and buildings in Catalonia",
+      "meta.title": "Castelvar · Industrial tents and buildings, we take care of everything",
       "meta.desc": "Aluminium tents and fabric buildings for storage, industry and agriculture. Engineers, Eurocode structural design, transport and installation at a fixed price. Request a free, no-obligation quote.",
       "meta.ogdesc": "Engineering, manufacturing, transport and installation at a fixed price. Request a free, no-obligation quote.",
       skip: "Skip to the quote form",
@@ -490,7 +490,7 @@
       "nav.projects": "Projects",
       "nav.faq": "FAQ",
       "cta.quote": "Get a quote",
-      "hero.eyebrow": "Industrial tents and buildings in Catalonia",
+      "hero.eyebrow": "Industrial tents and buildings<span class=\"eb-sep\"> · </span><span class=\"eb-2\">We take care of everything</span>",
       "hero.title": "More covered space, no construction work and a <span>fixed price</span>",
       "hero.lead": "We are engineers. We design, supply, transport and install aluminium tents and fabric buildings for storage, industry and agriculture throughout Catalonia.",
       "hero.q1": "Specialist engineers",
