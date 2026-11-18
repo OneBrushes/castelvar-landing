@@ -2,7 +2,7 @@
 // Todo lo que dejes vacío se oculta en la web. No pongas cifras, garantías u opiniones que no sean reales.
 window.CASTELVAR = {
   // Dónde se envían las solicitudes (la app) y clave del formulario (app → Ajustes → Formulario web)
-  apiUrl: "https://app.castelvar.workers.dev/api/leads",
+  apiUrl: "https://app.castelvar.com/api/leads",
   formKey: "d2a1e30fe733c50eb23db9cc",
 
   // Contacto (se muestra arriba, en el formulario y en el pie)
