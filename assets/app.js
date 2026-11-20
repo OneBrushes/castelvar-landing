@@ -14,6 +14,12 @@
     onChange: function () {},
   };
   var t = i18n.t;
+  // Iconos de línea (los mismos que assets/icons/*.svg)
+  var ICON = {
+    tel: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 3.5h3l1.5 4-2 1.25a10.5 10.5 0 0 0 7.25 7.25L16.5 14l4 1.5v3a2 2 0 0 1-2 2C10.5 20.5 3.5 13.5 3.5 5.5a2 2 0 0 1 2-2z"/></svg>',
+    msg: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 11.5c0 4.4-3.8 8-8.5 8a9 9 0 0 1-3.9-.9L3.5 20l1.3-3.8A7.6 7.6 0 0 1 3.5 11.5c0-4.4 3.8-8 8.5-8s8.5 3.6 8.5 8z"/></svg>',
+    mail: '<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.25 8.5-6.25"/></svg>',
+  };
   var pick = i18n.pick;
 
   // ---------- Contenido configurable (todo lo vacío se oculta) ----------
@@ -29,9 +35,9 @@
   function render() {
     waUrl = wa ? "https://wa.me/" + wa + "?text=" + encodeURIComponent(t("js.waMsg")) : "";
     var top = [];
-    if (phone) top.push('<a href="tel:' + tel + '">📞 ' + esc(phone) + "</a>");
-    if (wa) top.push('<a href="' + waUrl + '" target="_blank" rel="noopener">💬 WhatsApp</a>');
-    if (email) top.push('<a href="mailto:' + esc(email) + '">✉️ ' + esc(email) + "</a>");
+    if (phone) top.push('<a href="tel:' + tel + '">' + ICON.tel + esc(phone) + "</a>");
+    if (wa) top.push('<a href="' + waUrl + '" target="_blank" rel="noopener">' + ICON.msg + "WhatsApp</a>");
+    if (email) top.push('<a href="mailto:' + esc(email) + '">' + ICON.mail + esc(email) + "</a>");
     if (top.length) {
       $("#topbar-links").innerHTML = top.join("");
       $("#topbar").hidden = false;
@@ -217,6 +223,15 @@
       form.length.value = v[1] || "";
     }
   });
+  // Primera vez que se toca el formulario: lo cuenta la medición (assets/medir.js)
+  var started = false;
+  function formStarted() {
+    if (started) return;
+    started = true;
+    document.dispatchEvent(new CustomEvent("castelvar:form-start"));
+  }
+  form.addEventListener("input", formStarted);
+  form.addEventListener("change", formStarted);
   // Elegir el uso pasa directamente al paso 2
   form.addEventListener("change", function (e) {
     if (e.target.name === "use_case" && current === 1) setTimeout(function () { show(2); }, 180);
@@ -295,7 +310,8 @@
           var th = $("#thanks");
           th.hidden = false;
           th.focus();
-          if (typeof window.gtag === "function") window.gtag("event", "generate_lead");
+          // Solicitud enviada: la medición y los píxeles aceptados lo registran (assets/medir.js)
+          document.dispatchEvent(new CustomEvent("castelvar:lead"));
           return;
         }
         if (res && res.fields) {

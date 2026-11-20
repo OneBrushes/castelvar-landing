@@ -16,4 +16,10 @@ solo contiene esta carpeta (aquí no hay nada secreto).
   plazo, provincia) siguen en español; si el visitante usa otro idioma, el mensaje de la solicitud empieza por
   `[Idioma de la web: …]`. Las páginas legales están solo en español.
 
+- **Visitas y mapa de calor**: `assets/medir.js` mide de forma anónima y sin cookies (se ve en la app → Web). Las zonas del mapa
+  son los `id` de las secciones (y `data-zone`): si cambias un id, los clics anteriores de esa zona dejan de pintarse.
+- **Píxeles** (Meta, Google, TikTok…): se activan en la app → Web → Píxeles, no aquí. Con alguno activo aparece el aviso de cookies
+  y solo se cargan si el visitante los acepta. Política en `cookies.html`.
+- **Iconos**: SVG de línea en `assets/icons/` (trazo 1,5, color heredado). En el HTML van en línea con la clase `i`.
+
 Publicar cambios: `npm run landing:publish` (desde la raíz del proyecto).

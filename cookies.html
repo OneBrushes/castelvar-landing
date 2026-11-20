@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Política de cookies · Castelvar</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600&family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="wrap header-inner"><a href="./" class="brand"><img src="assets/logo.svg" alt="Castelvar" width="150" height="34" /></a></div>
+    </header>
+    <main class="legal wrap narrow">
+      <h1>Política de cookies</h1>
+      <p>
+        Las cookies y tecnologías parecidas guardan o leen información en tu navegador. Aquí te explicamos cuáles usa esta web, para qué y cómo
+        cambiar tu elección en cualquier momento.
+      </p>
+
+      <h2>Necesarias (siempre activas)</h2>
+      <p>No necesitan tu permiso porque sin ellas la web no funciona como esperas. No sirven para identificarte.</p>
+      <ul>
+        <li><strong>castelvar-lang</strong> (almacenamiento local): el idioma que eliges en el pie. Hasta que lo borres.</li>
+        <li><strong>castelvar-consent</strong> (almacenamiento local): tu elección sobre las cookies. Hasta que la cambies o la borres.</li>
+        <li><strong>utm_source, utm_medium, utm_campaign, gclid</strong> (almacenamiento de sesión): el anuncio o enlace por el que llegaste, para adjuntarlo a tu solicitud. Se borran al cerrar la pestaña.</li>
+      </ul>
+
+      <h2>Medición propia, sin cookies</h2>
+      <p>
+        Contamos las visitas para saber qué funciona: página vista, de dónde llegas (por ejemplo, Google o un anuncio), si usas móvil u ordenador,
+        hasta dónde bajas y dónde haces clic. No usamos cookies ni guardamos tu IP o identificadores: solo sumamos totales por día. Si tu navegador
+        pide no ser rastreado (Do Not Track), no contamos nada.
+      </p>
+
+      <h2>Analítica y publicidad de terceros (solo si las aceptas)</h2>
+      <p id="ck-none">Ahora mismo esta web no usa ninguna.</p>
+      <ul id="ck-list" hidden></ul>
+      <p>
+        Estas herramientas pueden guardar sus propias cookies y, en algunos casos, tratar datos fuera de la Unión Europea con las garantías que
+        prevé el RGPD. Cada proveedor explica en su política cómo lo hace.
+      </p>
+
+      <h2>Cambiar tu elección</h2>
+      <p>
+        <button type="button" class="btn btn-secondary" id="ck-reset">Volver a elegir</button>
+        <span id="ck-state" class="muted"></span>
+      </p>
+      <p>También puedes borrar las cookies desde la configuración de tu navegador.</p>
+
+      <p><a href="./">← Volver</a></p>
+    </main>
+    <script src="config.js"></script>
+    <script>
+      (function () {
+        var INFO = {
+          meta: ["Meta (Facebook e Instagram)", "Publicidad", "https://www.facebook.com/privacy/policy/"],
+          gads: ["Google Ads", "Publicidad", "https://policies.google.com/privacy"],
+          gtm: ["Google Tag Manager", "Publicidad", "https://policies.google.com/privacy"],
+          tiktok: ["TikTok", "Publicidad", "https://www.tiktok.com/legal/privacy-policy-eea"],
+          linkedin: ["LinkedIn", "Publicidad", "https://www.linkedin.com/legal/privacy-policy"],
+          bing: ["Microsoft Advertising", "Publicidad", "https://privacy.microsoft.com/privacystatement"],
+          pinterest: ["Pinterest", "Publicidad", "https://policy.pinterest.com/privacy-policy"],
+          x: ["X (Twitter)", "Publicidad", "https://x.com/privacy"],
+          ga4: ["Google Analytics", "Analítica", "https://policies.google.com/privacy"],
+          clarity: ["Microsoft Clarity", "Analítica", "https://privacy.microsoft.com/privacystatement"],
+          hotjar: ["Hotjar", "Analítica", "https://www.hotjar.com/legal/policies/privacy/"],
+        };
+        var cfg = window.CASTELVAR || {};
+        var state = document.getElementById("ck-state");
+        try {
+          var c = JSON.parse(localStorage.getItem("castelvar-consent") || "null");
+          state.textContent = c
+            ? " Tu elección actual: analítica " + (c.a ? "aceptada" : "rechazada") + ", publicidad " + (c.m ? "aceptada" : "rechazada") + "."
+            : " Todavía no has elegido.";
+        } catch (e) {}
+        document.getElementById("ck-reset").addEventListener("click", function () {
+          try {
+            localStorage.removeItem("castelvar-consent");
+          } catch (e) {}
+          location.href = "./";
+        });
+        var base = "";
+        try {
+          base = new URL(cfg.apiUrl).origin;
+        } catch (e) {}
+        if (!base || !cfg.formKey) return;
+        fetch(base + "/api/web/config?k=" + encodeURIComponent(cfg.formKey), { credentials: "omit" })
+          .then(function (r) {
+            return r.json();
+          })
+          .then(function (res) {
+            var keys = Object.keys((res && res.pixels) || {}).filter(function (k) {
+              return INFO[k];
+            });
+            if (!keys.length) return;
+            var ul = document.getElementById("ck-list");
+            keys.forEach(function (k) {
+              var li = document.createElement("li");
+              var a = document.createElement("a");
+              a.href = INFO[k][2];
+              a.target = "_blank";
+              a.rel = "noopener";
+              a.textContent = "política";
+              li.append(document.createElement("strong"), " (" + INFO[k][1].toLowerCase() + "): ", a);
+              li.firstChild.textContent = INFO[k][0];
+              ul.appendChild(li);
+            });
+            ul.hidden = false;
+            document.getElementById("ck-none").hidden = true;
+          })
+          .catch(function () {});
+      })();
+    </script>
+  </body>
+</html>
