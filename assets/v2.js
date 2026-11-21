@@ -439,4 +439,12 @@
       return null;
     }
   }
+  // ---------- Antes / después ----------
+  var compare = document.getElementById("compare");
+  if (compare) {
+    var range = compare.querySelector(".compare-range");
+    range.addEventListener("input", function () {
+      compare.style.setProperty("--pos", range.value + "%");
+    });
+  }
 })();
