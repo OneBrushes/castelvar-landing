@@ -289,6 +289,20 @@ a {
   width: 158px;
   height: auto;
 }
+/* Con la barra arriba (sobre la foto oscura del hero): logo blanco y enlaces en blanco */
+.brand .logo-light {
+  display: none;
+}
+.site-header:not(.is-floating) .logo-dark {
+  display: none;
+}
+.site-header:not(.is-floating) .logo-light {
+  display: block;
+}
+.site-header:not(.is-floating) .nav a,
+.site-header:not(.is-floating) .header-phone {
+  color: #fff;
+}
 .nav {
   display: flex;
   gap: 24px;
@@ -333,7 +347,7 @@ a {
   height: calc(100% + 48px);
   max-width: none;
   margin: -24px;
-  filter: blur(7px);
+  filter: blur(7px) brightness(0.42);
   object-fit: cover;
   object-position: 62% 40%;
   transform-origin: 62% 45%;
@@ -352,6 +366,7 @@ a {
 }
 /* sombra suave (clara) detrás del texto, sin velo sobre la foto */
 .hero-copy::before {
+  display: none;
   content: "";
   position: absolute;
   inset: -70px -90px;
@@ -373,12 +388,15 @@ a {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--blue);
+  color: #c9d3e0;
   margin-bottom: 18px;
+}
+.hero h1 {
+  color: #fff;
 }
 .lead {
   font-size: 1.2rem;
-  color: #26323f;
+  color: #d3dce8;
   max-width: 30em;
   margin: 0;
 }
@@ -395,14 +413,14 @@ a {
   align-items: center;
   gap: 8px;
   font-weight: 600;
-  color: var(--blue);
+  color: #fff;
 }
 .hero-points li::before {
   content: "";
   flex: none;
   width: 18px;
   height: 18px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='%231f3a5f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='%23e9c3a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/18px no-repeat;
 }
 .hero-note {
   position: absolute;
@@ -414,7 +432,7 @@ a {
   line-height: 1.4;
 }
 .hero-note a {
-  color: #3b4a5c;
+  color: #b9c6d6;
   text-decoration: none;
 }
 .hero-note a:hover {
@@ -1323,15 +1341,12 @@ a {
     min-height: 0;
     padding: 84px 0 32px;
   }
-  .hero-media {
-    bottom: auto;
-    height: 440px;
-    /* la foto se funde con el blanco detrás del formulario */
-    -webkit-mask-image: linear-gradient(#000 70%, transparent);
-    mask-image: linear-gradient(#000 70%, transparent);
-  }
+  /* En móvil la foto ocupa todo el hero */
   .hero-media img {
     object-position: 30% 50%;
+  }
+  .site-header:not(.is-floating) .logo-light {
+    width: 132px;
   }
   .hero-inner {
     display: block;
@@ -1358,8 +1373,9 @@ a {
   .hero-points li {
     padding: 7px 12px 7px 8px;
     border-radius: var(--r);
-    background: rgb(255 255 255 / 72%);
-    border: 1px solid rgb(31 58 95 / 16%);
+    color: #fff;
+    background: rgb(255 255 255 / 10%);
+    border: 1px solid rgb(255 255 255 / 22%);
     font-size: 14px;
     font-weight: 500;
     line-height: 1.2;
@@ -1368,10 +1384,11 @@ a {
   .hero-points li::before {
     width: 16px;
     height: 16px;
-    background-size: 16px;
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='m5 12.5 4.5 4.5L19 7.5' fill='none' stroke='%23e9c3a6' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat;
   }
   .hero-note {
-    position: static;
+    position: relative; /* por encima de la foto del hero */
+    bottom: auto;
     margin-top: 14px;
     font-size: 12px;
   }

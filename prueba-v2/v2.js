@@ -39,37 +39,58 @@
     return typeof v === "string" ? v : v.es || "";
   }
 
-  // ---------- Contacto (config.js). Lo vacío no se muestra ----------
-  var phone = (cfg.phone || "").trim();
-  var tel = phone.replace(/[^\d+]/g, "");
-  var wa = (cfg.whatsapp || "").replace(/\D/g, "");
-  var waUrl = wa ? "https://wa.me/" + wa + "?text=" + encodeURIComponent(t("js.waMsg")) : "";
+  // ---------- Contacto: teléfono y WhatsApp ----------
+  // Se cambian en la app (Web → Ajustes → Contacto de la web) y llegan por /api/web/config.
+  // Mientras responde la app (o si falla) se usan los de config.js. Lo vacío no se muestra.
+  var phone = "";
+  var tel = "";
+  var wa = "";
+  var waUrl = "";
   var email = (cfg.email || "").trim();
-
-  if (phone) {
-    var hp = $("#header-phone");
-    hp.href = "tel:" + tel;
-    hp.textContent = phone;
-    hp.hidden = false;
-  }
-  // WhatsApp: botón flotante abajo a la derecha. Siempre visible.
-  // TODO: el número vendrá de la app interna; mientras tanto se lee de config.js (whatsapp).
-  // Sin número, WhatsApp se abre con el mensaje escrito para elegir a quién enviarlo.
   var wf = $("#wa-float");
-  wf.href = waUrl || "https://wa.me/?text=" + encodeURIComponent(t("js.waMsg"));
-  wf.hidden = false;
+
+  function applyContact(newPhone, newWa) {
+    phone = (newPhone || "").trim();
+    tel = phone.replace(/[^\d+]/g, "");
+    wa = (newWa || "").replace(/\D/g, "");
+    waUrl = wa ? "https://wa.me/" + wa + "?text=" + encodeURIComponent(t("js.waMsg")) : "";
+    var hp = $("#header-phone");
+    hp.hidden = !phone;
+    if (phone) {
+      hp.href = "tel:" + tel;
+      hp.textContent = phone;
+    }
+    // WhatsApp: botón flotante abajo a la derecha, solo si hay número
+    wf.hidden = !waUrl;
+    if (waUrl) wf.href = waUrl;
+    renderFooterContact();
+  }
+  function renderFooterContact() {
+    var fc = [];
+    if (phone) fc.push('<li><a href="tel:' + tel + '">' + esc(phone) + "</a></li>");
+    if (wa) fc.push('<li><a href="' + waUrl + '" target="_blank" rel="noopener">WhatsApp</a></li>');
+    if (email) fc.push('<li><a href="mailto:' + esc(email) + '">' + esc(email) + "</a></li>");
+    var hours = pick(cfg.hours);
+    if (hours) fc.push("<li>" + esc(hours) + "</li>");
+    $("#footer-contact").innerHTML = fc.join("") || '<li><a href="#presupuesto">' + esc(t("js.footerForm")) + "</a></li>";
+  }
+  applyContact(cfg.phone, cfg.whatsapp);
+  try {
+    if (cfg.apiUrl && /^[a-f0-9]{12,64}$/i.test(cfg.formKey || "")) {
+      fetch(new URL(cfg.apiUrl).origin + "/api/web/config?k=" + encodeURIComponent(cfg.formKey), { credentials: "omit" })
+        .then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (res) {
+          var c = res && res.contact;
+          if (c) applyContact(c.phone || cfg.phone, c.whatsapp || cfg.whatsapp);
+        })
+        .catch(function () {});
+    }
+  } catch (e) {}
   var rt = pick(cfg.responseTime);
   if (rt) {
     $("#response-time").textContent = t("js.respond", { t: rt });
     $("#thanks-time").textContent = t("js.thanksTime", { t: rt });
   }
-  var fc = [];
-  if (phone) fc.push('<li><a href="tel:' + tel + '">' + esc(phone) + "</a></li>");
-  if (wa) fc.push('<li><a href="' + waUrl + '" target="_blank" rel="noopener">WhatsApp</a></li>');
-  if (email) fc.push('<li><a href="mailto:' + esc(email) + '">' + esc(email) + "</a></li>");
-  var hours = pick(cfg.hours);
-  if (hours) fc.push("<li>" + esc(hours) + "</li>");
-  $("#footer-contact").innerHTML = fc.join("") || '<li><a href="#presupuesto">' + esc(t("js.footerForm")) + "</a></li>";
   var co = cfg.company || {};
   $("#footer-company").innerHTML =
     [co.legalName, co.nif && "NIF " + co.nif, co.address]
@@ -157,7 +178,9 @@
     });
   });
 
-  // ---------- Campañas (Google Ads, redes…) ----------
+  // ---------- De dónde viene la visita (se guarda con la solicitud) ----------
+  // Prioridad: utm del enlace > identificador de clic del anuncio > web de procedencia.
+  // Se apunta la primera vez de la visita (sessionStorage) para no perderlo al navegar por la página.
   var params = new URLSearchParams(location.search);
   var utm = {};
   ["utm_source", "utm_medium", "utm_campaign"].forEach(function (k) {
@@ -167,9 +190,48 @@
       store(k, v);
     }
   });
-  if (!utm.utm_source && (params.get("gclid") || store("gclid"))) {
-    utm.utm_source = "google_ads";
-    store("gclid", "1");
+  if (!utm.utm_source) {
+    var CLICK_IDS = [
+      ["gclid", "google_ads"], // Google Ads
+      ["gbraid", "google_ads"],
+      ["wbraid", "google_ads"],
+      ["fbclid", "meta"], // Facebook e Instagram (anuncios y enlaces compartidos)
+      ["ttclid", "tiktok"],
+      ["msclkid", "bing"],
+      ["li_fat_id", "linkedin"],
+    ];
+    for (var i = 0; i < CLICK_IDS.length; i++) {
+      if (params.get(CLICK_IDS[i][0])) {
+        store("utm_source", CLICK_IDS[i][1]);
+        store("utm_medium", "cpc");
+        break;
+      }
+    }
+    if (!store("utm_source")) {
+      var ref = "";
+      try {
+        ref = document.referrer ? new URL(document.referrer).hostname.replace(/^www\./, "") : "";
+      } catch (e) {}
+      if (ref && ref !== location.hostname.replace(/^www\./, "")) {
+        var REFS = [
+          [/(^|\.)(facebook\.com|fb\.com|fb\.me|instagram\.com|messenger\.com)$/, "meta", "social"],
+          [/(^|\.)tiktok\.com$/, "tiktok", "social"],
+          [/(^|\.)(linkedin\.com|lnkd\.in)$/, "linkedin", "social"],
+          [/(^|\.)(youtube\.com|youtu\.be)$/, "youtube", "social"],
+          [/(^|\.)(t\.co|twitter\.com|x\.com)$/, "x", "social"],
+          [/(^|\.)google\./, "google", "organico"],
+          [/(^|\.)bing\.com$/, "bing", "organico"],
+        ];
+        var found = null;
+        for (var j = 0; j < REFS.length; j++) if (REFS[j][0].test(ref)) found = REFS[j];
+        store("utm_source", found ? found[1] : ref.slice(0, 100));
+        store("utm_medium", found ? found[2] : "referido");
+      }
+    }
+    if (store("utm_source")) {
+      utm.utm_source = store("utm_source");
+      if (store("utm_medium")) utm.utm_medium = store("utm_medium");
+    }
   }
 
   // ---------- Formulario por pasos (igual que la home) ----------
