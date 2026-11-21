@@ -1,4 +1,4 @@
-// Home de prueba v2. El formulario funciona igual que en la home (copiado de assets/app.js):
+// Home de Castelvar (antes /prueba-v2). El formulario funciona igual que en la home (copiado de assets/app.js):
 // mismos campos, misma validación, mismo envío a la app y mismas campañas (utm / gclid).
 // Cambia solo la presentación: transición entre pasos, barra móvil y aparición de 3 bloques al hacer scroll.
 (function () {
@@ -29,6 +29,31 @@
     "js.offline": "No hay conexión. Revisa tu internet e inténtalo de nuevo.",
     "js.urgent": "¿Urgente?",
   };
+  // Aviso de cookies (lo pinta assets/medir.js con window.I18N)
+  Object.assign(ES, {
+    "ck.title": "Cookies",
+    "ck.text": "Usamos cookies necesarias y, si nos dejas, otras de analítica y de publicidad para medir nuestras campañas. Puedes aceptarlas, rechazarlas o elegir.",
+    "ck.accept": "Aceptar todas",
+    "ck.reject": "Rechazar",
+    "ck.config": "Configurar",
+    "ck.save": "Guardar selección",
+    "ck.necessary": "Necesarias",
+    "ck.necessaryDesc": "Recuerdan tu elección sobre las cookies.",
+    "ck.always": "Siempre activas",
+    "ck.analytics": "Analítica",
+    "ck.analyticsDesc": "Nos ayudan a entender cómo se usa la web ({list}).",
+    "ck.ads": "Publicidad",
+    "ck.adsDesc": "Miden nuestras campañas y permiten mostrarte anuncios relevantes ({list}).",
+    "ck.more": "Más información",
+  });
+  if (!window.I18N) {
+    window.I18N = {
+      t: function (k, v) { return t(k, v); },
+      pick: pick,
+      lang: function () { return "es"; },
+      onChange: function () {},
+    };
+  }
   function t(k, vars) {
     var s = ES[k] || k;
     if (vars) s = s.replace(/\{(\w+)\}/g, function (_, v) { return vars[v] == null ? "" : vars[v]; });

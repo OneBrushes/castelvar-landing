@@ -1,6 +1,24 @@
-/* Castelvar · home de prueba v2 (independiente de assets/styles.css) */
+/* Castelvar · home (index.html). Independiente de assets/styles.css, que sigue usando home-anterior.html */
+/* Fuentes propias (licencia SIL OFL; variables, solo caracteres latinos) */
+@font-face {
+  font-family: Archivo;
+  font-style: normal;
+  font-weight: 600 700;
+  font-display: swap;
+  src: url("fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+  src: url("fonts/inter-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 :root {
   --blue: #1f3a5f;
+  --blue-800: #182f4d;
   --blue-900: #12243b;
   --blue-50: #eef2f7;
   --blue-100: #dde5ef;
@@ -1631,4 +1649,155 @@ a {
   .btn:hover {
     transform: none;
   }
+}
+
+/* ===================== Pie: «Configurar cookies» ===================== */
+.link-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+.link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ===================== Aviso de cookies (assets/medir.js) ===================== */
+.ck {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  background: #fff;
+  color: var(--ink);
+  border-top: 1px solid var(--line);
+  box-shadow: 0 -10px 30px rgb(16 24 40 / 10%);
+  padding: 20px 0 calc(20px + env(safe-area-inset-bottom));
+}
+.ck-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px 32px;
+  align-items: center;
+}
+.ck-title {
+  font: 600 1rem var(--display);
+  color: var(--blue);
+  margin: 0 0 4px;
+}
+.ck-text {
+  margin: 0;
+  font-size: 14px;
+  color: var(--muted);
+  max-width: 62em;
+}
+.ck-text a {
+  color: var(--blue);
+}
+.ck-options {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: 10px;
+}
+.ck-opt {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+.ck-opt input {
+  width: 18px;
+  height: 18px;
+  margin: 2px 0 0;
+  accent-color: var(--blue);
+}
+.ck-opt strong {
+  display: block;
+  color: var(--blue);
+  font-weight: 600;
+}
+.ck-opt small {
+  display: block;
+  color: var(--muted);
+  font-size: 13px;
+}
+.ck-opt em {
+  font-style: normal;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+.ck-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+.ck-options:not([hidden]) ~ .ck-actions {
+  grid-column: 1 / -1;
+  justify-content: flex-end;
+}
+/* «Aceptar» y «Rechazar» con el mismo peso */
+.ck-btn {
+  min-width: 150px;
+  padding: 12px 18px;
+  font-size: 14px;
+  background: var(--blue);
+  color: #fff;
+}
+.ck-btn:hover {
+  background: var(--blue-800);
+}
+.ck-link {
+  border: 0;
+  background: none;
+  padding: 8px 4px;
+  font: 600 14px Inter, system-ui, sans-serif;
+  color: var(--blue);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  cursor: pointer;
+}
+body.has-ck .mobile-bar,
+body.has-ck .wa-float {
+  display: none !important;
+}
+@media (max-width: 760px) {
+  .ck-inner {
+    grid-template-columns: 1fr;
+  }
+  .ck-actions {
+    justify-content: stretch;
+  }
+  .ck-btn {
+    flex: 1 1 40%;
+    min-width: 0;
+  }
+  .ck-link {
+    flex-basis: 100%;
+  }
+  .ck-opt {
+    grid-template-columns: 20px minmax(0, 1fr);
+  }
+  .ck-opt em {
+    grid-column: 2;
+  }
+}
+
+/* ===================== Mapa de calor (la web dentro de la app, ?mapa=1) ===================== */
+.mapa .mobile-bar,
+.mapa .wa-float,
+.mapa .ck {
+  display: none !important;
+}
+.mapa .site-header {
+  position: absolute;
 }
