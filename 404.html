@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Esta carpa aún está en construcción · Castelvar</title>
+    <meta name="robots" content="noindex" />
+    <meta name="theme-color" content="#1F3A5F" />
+    <!-- GitHub Pages sirve esta página en cualquier dirección que no exista: todas las rutas van desde la raíz -->
+    <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+    <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/archivo-latin.woff2" crossorigin />
+    <style>
+      @font-face {
+        font-family: Archivo;
+        font-weight: 600 700;
+        font-display: swap;
+        src: url("/assets/fonts/archivo-latin.woff2") format("woff2");
+      }
+      @font-face {
+        font-family: Inter;
+        font-weight: 400 600;
+        font-display: swap;
+        src: url("/assets/fonts/inter-latin.woff2") format("woff2");
+      }
+      :root {
+        --blue: #1f3a5f;
+        --blue-900: #12243b;
+        --blue-50: #eef2f7;
+        --blue-100: #dde5ef;
+        --blue-300: #b7c4d4;
+        --ink: #1d2329;
+        --muted: #59626d;
+        --accent: #c25a24;
+        --accent-700: #a64b1c;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        margin: 0;
+        background: #fff;
+        color: var(--ink);
+        font: 400 17px/1.6 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+      a {
+        color: inherit;
+      }
+      .top {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 22px 16px;
+      }
+      .top img {
+        display: block;
+        height: 30px;
+        width: auto;
+      }
+      main {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 24px 16px 72px;
+        text-align: center;
+      }
+      .kicker {
+        display: inline-block;
+        margin: 0 0 14px;
+        padding: 5px 12px;
+        border-radius: 999px;
+        background: var(--blue-50);
+        color: var(--blue);
+        font: 600 13px/1.4 Inter, sans-serif;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0 auto;
+        max-width: 15ch;
+        font: 700 clamp(2.1rem, 6vw, 3.4rem) / 1.04 Archivo, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: -0.03em;
+        color: var(--blue);
+      }
+      .lead {
+        margin: 16px auto 0;
+        max-width: 46ch;
+        color: var(--muted);
+      }
+
+      /* ---------- Escena ---------- */
+      .scene {
+        position: relative;
+        margin: 28px auto 0;
+        max-width: 680px;
+      }
+      .scene svg {
+        display: block;
+        width: 100%;
+        height: auto;
+        overflow: visible;
+      }
+      .cloud {
+        animation: drift 26s linear infinite;
+      }
+      .cloud.c2 {
+        animation-duration: 38s;
+        animation-delay: -14s;
+      }
+      @keyframes drift {
+        from {
+          transform: translateX(-60px);
+        }
+        to {
+          transform: translateX(700px);
+        }
+      }
+      .lona {
+        transform-box: fill-box;
+        transform-origin: 50% 0;
+        transform: scaleY(0);
+        transition: transform 0.7s var(--ease);
+      }
+      .lona.on {
+        transform: scaleY(1);
+      }
+      .load {
+        transform-origin: 470px 70px;
+        animation: swing 3.2s ease-in-out infinite alternate;
+      }
+      @keyframes swing {
+        from {
+          transform: rotate(-3deg);
+        }
+        to {
+          transform: rotate(3deg);
+        }
+      }
+      .load.placed {
+        animation: none;
+        transform: rotate(0deg);
+      }
+      .rib-new {
+        transition: transform 1.1s var(--ease);
+      }
+      .placed .rib-new {
+        transform: translateY(60px);
+      }
+      .cable {
+        transition: opacity 0.4s 1.1s;
+      }
+      .placed .cable,
+      .placed .hook {
+        opacity: 0;
+      }
+      .purlin-end {
+        opacity: 0;
+        transition: opacity 0.4s 1s;
+      }
+      .placed ~ .purlin-end,
+      .scene.rib-done .purlin-end {
+        opacity: 1;
+      }
+      .flag {
+        transform-box: fill-box;
+        transform-origin: 0 100%;
+        transform: scale(0);
+        transition: transform 0.6s var(--ease) 0.3s;
+      }
+      .scene.done .flag {
+        transform: scale(1);
+      }
+      .beacon {
+        animation: blink 1.4s steps(2, jump-none) infinite;
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0.25;
+        }
+      }
+
+      /* ---------- Controles ---------- */
+      .help {
+        margin: 18px auto 0;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 10px 16px;
+      }
+      .progress {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-height: 48px;
+        padding: 0 22px;
+        border: 1.5px solid transparent;
+        border-radius: 8px;
+        font: 600 16px/1 Inter, sans-serif;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s, color 0.2s, transform 0.2s;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-outline {
+        background: #fff;
+        border-color: var(--blue-300);
+        color: var(--blue);
+      }
+      .btn-outline:hover {
+        border-color: var(--blue);
+      }
+      .btn-outline[disabled] {
+        opacity: 0.5;
+        cursor: default;
+      }
+      .btn-primary {
+        background: var(--blue);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--blue-900);
+      }
+      .btn-cta {
+        background: var(--accent);
+        color: #fff;
+      }
+      .btn-cta:hover {
+        background: var(--accent-700);
+      }
+      .btn:focus-visible {
+        outline: 3px solid var(--accent);
+        outline-offset: 2px;
+      }
+      .done-msg {
+        margin: 22px auto 0;
+        max-width: 42ch;
+        font: 600 18px/1.4 Archivo, sans-serif;
+        color: var(--blue);
+        opacity: 0;
+        transform: translateY(8px);
+        transition: opacity 0.5s, transform 0.5s var(--ease);
+      }
+      .done-msg.show {
+        opacity: 1;
+        transform: none;
+      }
+      .actions {
+        margin-top: 26px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
+      .done .btn-cta {
+        animation: pop 0.6s var(--ease);
+      }
+      @keyframes pop {
+        40% {
+          transform: scale(1.06);
+        }
+      }
+      .links {
+        margin-top: 28px;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .links a {
+        color: var(--blue);
+      }
+      @media (max-width: 520px) {
+        main {
+          padding-top: 8px;
+        }
+        .actions .btn {
+          flex: 1 1 100%;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation: none !important;
+          transition-duration: 0.01ms !important;
+          transition-delay: 0s !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="top">
+      <a href="/" aria-label="Castelvar, ir al inicio"><img src="/assets/logo.svg" alt="Castelvar" width="152" height="30" /></a>
+    </header>
+
+    <main id="page">
+      <p class="kicker">Error 404</p>
+      <h1>Esta carpa aún está en construcción</h1>
+      <p class="lead">Creo que te has desviado: aquí todavía no hay nada cubierto. La página que buscas no existe o la hemos movido de sitio.</p>
+
+      <div class="scene" id="scene">
+        <svg viewBox="0 0 640 340" role="img" aria-labelledby="scene-t">
+          <title id="scene-t">Una carpa a medio montar: varios arcos colocados, parte de la lona puesta y una grúa bajando el último arco</title>
+
+          <defs>
+            <clipPath id="marco"><rect width="640" height="340" rx="18" /></clipPath>
+            <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#dfe9f4" />
+              <stop offset="1" stop-color="#eef3f9" />
+            </linearGradient>
+          </defs>
+          <g clip-path="url(#marco)">
+          <!-- cielo -->
+          <rect width="640" height="300" fill="url(#cielo)" />
+          <circle cx="92" cy="70" r="30" fill="#fff" opacity="0.85" />
+          <g class="cloud" fill="#fff">
+            <ellipse cx="0" cy="44" rx="34" ry="11" />
+            <ellipse cx="18" cy="36" rx="20" ry="11" />
+          </g>
+          <g class="cloud c2" fill="#fff" opacity="0.8">
+            <ellipse cx="0" cy="96" rx="28" ry="9" />
+            <ellipse cx="14" cy="89" rx="16" ry="9" />
+          </g>
+
+          <!-- suelo -->
+          <rect x="0" y="300" width="640" height="40" fill="#e3e9f0" />
+          <line x1="0" y1="300" x2="640" y2="300" stroke="#c9d4e0" stroke-width="2" />
+
+          <!-- lonas (se van poniendo) -->
+          <g stroke="#b7c4d4" stroke-width="1">
+            <g class="lona on" data-s="1">
+              <rect x="110" y="160" width="70" height="140" fill="#fff" />
+              <rect x="110" y="160" width="70" height="34" fill="#e6edf5" />
+            </g>
+            <g class="lona" data-s="2">
+              <rect x="180" y="160" width="70" height="140" fill="#fff" />
+              <rect x="180" y="160" width="70" height="34" fill="#e6edf5" />
+              <!-- puerta enrollable -->
+              <rect x="196" y="230" width="38" height="70" fill="#f6f8fb" />
+              <path d="M196 240h38M196 250h38M196 260h38M196 270h38M196 280h38M196 290h38" stroke="#dde5ef" />
+            </g>
+            <g class="lona" data-s="3">
+              <rect x="250" y="160" width="70" height="140" fill="#fff" />
+              <rect x="250" y="160" width="70" height="34" fill="#e6edf5" />
+            </g>
+            <g class="lona" data-s="4">
+              <rect x="320" y="160" width="70" height="140" fill="#fff" />
+              <rect x="320" y="160" width="70" height="34" fill="#e6edf5" />
+            </g>
+            <g class="lona" data-s="5">
+              <rect x="390" y="160" width="80" height="140" fill="#fff" />
+              <rect x="390" y="160" width="80" height="34" fill="#e6edf5" />
+            </g>
+          </g>
+
+          <!-- frontal (perfil del arco) -->
+          <path d="M60 300V214Q60 168 110 160V300Z" fill="#fff" stroke="#b7c4d4" />
+          <path d="M60 300V214Q60 168 110 160" fill="none" stroke="#1f3a5f" stroke-width="5" stroke-linecap="round" />
+
+          <!-- arcos ya colocados y correas -->
+          <g stroke="#1f3a5f" stroke-linecap="round">
+            <path d="M110 160H390M110 194H390" stroke-width="2.5" />
+            <path d="M110 300V160M180 300V160M250 300V160M320 300V160M390 300V160" stroke-width="5" />
+          </g>
+          <path class="purlin-end" d="M390 160H470M390 194H470" stroke="#1f3a5f" stroke-width="2.5" />
+
+          <!-- grúa -->
+          <g stroke="#1f3a5f" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <!-- torre -->
+            <path d="M560 300V60M584 300V60" stroke-width="3" />
+            <path d="M560 300L584 270L560 240L584 210L560 180L584 150L560 120L584 90L560 60" stroke-width="1.5" />
+            <!-- pluma y contrapluma -->
+            <path d="M400 60H630M400 70H584" stroke-width="3" />
+            <path d="M400 70L420 60L440 70L460 60L480 70L500 60L520 70L540 60L560 70" stroke-width="1.5" />
+            <path d="M572 60V28M572 28L420 60M572 28L626 60" stroke-width="1.5" />
+            <!-- cabina -->
+            <rect x="584" y="72" width="22" height="20" rx="2" fill="#fff" stroke-width="2" />
+          </g>
+          <rect x="612" y="60" width="18" height="18" fill="#1f3a5f" />
+          <circle class="beacon" cx="572" cy="24" r="4" fill="#c25a24" />
+          <!-- carro -->
+          <rect x="462" y="68" width="16" height="7" rx="1.5" fill="#1f3a5f" />
+
+          <!-- carga: el último arco colgando -->
+          <g class="load" id="load">
+            <line class="cable" x1="470" y1="74" x2="470" y2="96" stroke="#1f3a5f" stroke-width="1.5" />
+            <path class="hook" d="M470 96v6a4 4 0 1 1-4 4" fill="none" stroke="#1f3a5f" stroke-width="2" />
+            <path class="rib-new" d="M470 100V240" stroke="#1f3a5f" stroke-width="5" stroke-linecap="round" />
+          </g>
+
+          <!-- banderita cuando se termina -->
+          <g class="flag">
+            <path d="M84 168V132" stroke="#1f3a5f" stroke-width="2" />
+            <path d="M84 132l22 7-22 7z" fill="#c25a24" />
+          </g>
+
+          <!-- obra: conos y valla -->
+          <g>
+            <path d="M500 300l9-28h6l9 28z" fill="#c25a24" />
+            <path d="M505 286h14" stroke="#fff" stroke-width="4" />
+            <rect x="496" y="298" width="32" height="4" rx="1" fill="#1f3a5f" />
+          </g>
+          <g transform="translate(40 0)">
+            <path d="M24 300l7-22h4l7 22z" fill="#c25a24" />
+            <path d="M28 289h10" stroke="#fff" stroke-width="3" />
+          </g>
+          <g transform="translate(150 0)">
+            <path d="M220 300v-34M300 300v-34" stroke="#1f3a5f" stroke-width="3" />
+            <rect x="214" y="268" width="92" height="16" rx="2" fill="#fff" stroke="#1f3a5f" stroke-width="2" />
+            <path d="M224 284l12-16M244 284l12-16M264 284l12-16M284 284l12-16" stroke="#c25a24" stroke-width="5" />
+            <rect x="238" y="288" width="44" height="12" rx="2" fill="#1f3a5f" />
+            <text x="260" y="297.5" text-anchor="middle" font-family="Inter, sans-serif" font-size="8.5" font-weight="700" fill="#fff" letter-spacing="0.6">EN OBRA</text>
+          </g>
+          </g>
+        </svg>
+      </div>
+
+      <div class="help">
+        <button type="button" class="btn btn-outline" id="step">Ayúdanos a poner la lona</button>
+        <span class="progress" id="progress" aria-live="polite">Montada al 20%</span>
+      </div>
+      <p class="done-msg" id="done-msg" aria-live="polite">¡Carpa terminada! Si así de rápido montas tú, imagina nosotros. ¿Vamos con la tuya?</p>
+
+      <div class="actions">
+        <a class="btn btn-primary" href="/">Volver al inicio</a>
+        <a class="btn btn-cta" href="/#presupuesto">Pedir presupuesto</a>
+      </div>
+      <p class="links">O echa un vistazo a <a href="/#usos">los usos</a>, <a href="/#tecnica">la parte técnica</a> o <a href="/#preguntas">las preguntas frecuentes</a>.</p>
+    </main>
+
+    <script>
+      (function () {
+        var scene = document.getElementById("scene");
+        var load = document.getElementById("load");
+        var btn = document.getElementById("step");
+        var progress = document.getElementById("progress");
+        var msg = document.getElementById("done-msg");
+        var page = document.getElementById("page");
+        // pasos: 3 lonas, colocar el último arco, la última lona
+        var steps = [
+          { lona: 2, pct: 40, next: "Otra lona, que va bien" },
+          { lona: 3, pct: 55, next: "Una más" },
+          { lona: 4, pct: 70, next: "Colocar el último arco" },
+          { arco: true, pct: 85, next: "Poner la última lona" },
+          { lona: 5, pct: 100, next: "¡Terminada!" },
+        ];
+        var i = 0;
+        btn.addEventListener("click", function () {
+          var s = steps[i];
+          if (!s) return;
+          if (s.lona) scene.querySelector('.lona[data-s="' + s.lona + '"]').classList.add("on");
+          if (s.arco) {
+            load.classList.add("placed");
+            scene.classList.add("rib-done");
+          }
+          progress.textContent = "Montada al " + s.pct + "%";
+          btn.textContent = s.next;
+          i++;
+          if (i === steps.length) {
+            btn.disabled = true;
+            scene.classList.add("done");
+            page.classList.add("done");
+            msg.classList.add("show");
+          }
+        });
+      })();
+    </script>
+  </body>
+</html>
