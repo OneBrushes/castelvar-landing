@@ -5,7 +5,7 @@ solo contiene esta carpeta (aquí no hay nada secreto).
 
 - **Home**: `index.html` con `assets/v2.css` y `assets/v2.js` (solo español; fuentes en `assets/fonts/`). La anterior está guardada en
   `home-anterior.html` (con `styles.css`, `app.js` e `i18n.js`, no se indexa). `/prueba-v2/` redirige a la portada.
-- **Teléfono y WhatsApp**: se cambian en la app → Web → Ajustes → Contacto de la web (la web los lee al cargar; tarda hasta 1 minuto).
+- **Teléfono y WhatsApp**: se cambian en la app → Web → Ajustes → Contacto de la web (la web los lee al cargar; tarda hasta 1 minuto). Ahí también se activa o desactiva el botón flotante de WhatsApp.
 - `config.js`: dirección de la app y **clave del formulario** (app → Ajustes → Formulario web); teléfono, email y WhatsApp de respaldo.
 - `privacidad.html` y `aviso-legal.html`: rellenar los datos marcados en naranja (razón social, NIF, dirección…).
 - El formulario envía a `POST /api/leads` de la app. Cada solicitud aparece en **Ventas → Solicitudes web**.

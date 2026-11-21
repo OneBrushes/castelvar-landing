@@ -74,7 +74,7 @@
   var email = (cfg.email || "").trim();
   var wf = $("#wa-float");
 
-  function applyContact(newPhone, newWa) {
+  function applyContact(newPhone, newWa, waButton) {
     phone = (newPhone || "").trim();
     tel = phone.replace(/[^\d+]/g, "");
     wa = (newWa || "").replace(/\D/g, "");
@@ -85,8 +85,8 @@
       hp.href = "tel:" + tel;
       hp.textContent = phone;
     }
-    // WhatsApp: botón flotante abajo a la derecha, solo si hay número
-    wf.hidden = !waUrl;
+    // WhatsApp: botón flotante abajo a la derecha, solo si hay número y no está desactivado desde la app
+    wf.hidden = !waUrl || waButton === false;
     if (waUrl) wf.href = waUrl;
     renderFooterContact();
   }
@@ -106,7 +106,7 @@
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (res) {
           var c = res && res.contact;
-          if (c) applyContact(c.phone || cfg.phone, c.whatsapp || cfg.whatsapp);
+          if (c) applyContact(c.phone || cfg.phone, c.whatsapp || cfg.whatsapp, c.whatsappButton);
         })
         .catch(function () {});
     }
