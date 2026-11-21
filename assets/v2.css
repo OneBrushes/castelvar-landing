@@ -1359,7 +1359,13 @@ a {
     min-height: 0;
     padding: 84px 0 32px;
   }
-  /* En móvil la foto ocupa todo el hero */
+  /* En móvil la foto queda arriba y se funde con el blanco a mitad del formulario */
+  .hero-media {
+    bottom: auto;
+    height: 460px;
+    -webkit-mask-image: linear-gradient(#000 58%, transparent);
+    mask-image: linear-gradient(#000 58%, transparent);
+  }
   .hero-media img {
     object-position: 30% 50%;
   }
@@ -1409,6 +1415,10 @@ a {
     bottom: auto;
     margin-top: 14px;
     font-size: 12px;
+  }
+  /* debajo del formulario ya es fondo blanco */
+  .hero-note a {
+    color: var(--muted);
   }
   .quote-card {
     padding: 18px 16px;
