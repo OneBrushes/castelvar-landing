@@ -2,7 +2,7 @@
 // - El texto en español está en el HTML; aquí solo van las otras lenguas (y los textos que genera app.js).
 // - Marcado en el HTML: data-i18n="clave" (texto), data-i18n-html="clave" (con etiquetas) y
 //   data-i18n-attr="alt:clave;aria-label:clave2" (atributos).
-// - Idioma: ?lang=xx en la URL > el elegido en el pie (se recuerda) > idioma del dispositivo > español.
+// - Idioma: ?lang=xx en la URL > el elegido en el selector (se recuerda) > idioma del móvil/navegador > español.
 // - Si falta una traducción se muestra el texto en español.
 (function () {
   "use strict";
@@ -61,6 +61,68 @@
     },
 
     ca: {
+      // ---- Home actual (index.html) ----
+      "h.meta.title": "Castelvar · Carpes industrials, ens encarreguem de tot",
+      "h.meta.desc": "Carpes d'acer galvanitzat i lona tècnica per a magatzem, indústria i agricultura. Enginyers, càlcul segons l'Eurocodi, transport i muntatge amb preu tancat.",
+      "h.meta.ogdesc": "Carpes d'acer galvanitzat fetes per enginyers. Càlcul, transport i muntatge amb preu tancat. Demana pressupost sense compromís.",
+      "h.nav.uses": "Usos",
+      "h.nav.tech": "Tècnica",
+      "h.nav.faq": "Preguntes",
+      "h.hero.eyebrow": "Carpes industrials fetes per enginyers",
+      "h.hero.title": "Més espai cobert, sense obres i amb preu tancat.",
+      "h.hero.lead": "Calculem, subministrem, transportem i muntem carpes d'acer galvanitzat i lona tècnica per a magatzem, indústria i agricultura a tot Catalunya.",
+      "h.hero.p1": "Feta per enginyers",
+      "h.hero.p2": "Sense llicència*",
+      "h.hero.p3": "Muntatge en 1 dia",
+      "h.hero.note": "*Segons l'ajuntament i l'ús. Te'l gestionem nosaltres.",
+      "h.uses.title": "El que hi cap a sota",
+      "h.uses.lead": "Arcs d'acer galvanitzat i lona tècnica de PVC, a la mida del teu espai.",
+      "h.uses.1t": "Magatzem i logística",
+      "h.uses.1s": "Palets, estoc i molls de càrrega a cobert.",
+      "h.uses.2t": "Indústria i tallers",
+      "h.uses.2s": "Producció amb portes enrotllables, canals i llum.",
+      "h.uses.3t": "Agricultura",
+      "h.uses.3s": "Maquinària, palla i farratge, lluny de la pluja.",
+      "h.uses.4t": "Ramaderia",
+      "h.uses.4s": "Carpes ventilades per a vedells i bestiar. <a href=\"#ganaderia\">Veure'n més</a>",
+      "h.uses.5t": "Fusta i materials",
+      "h.uses.5s": "Assecatge i emmagatzematge a cobert, sense obres.",
+      "h.uses.6t": "Temporal",
+      "h.uses.6s": "Obres i campanyes. Es desmunta i te l'endús.",
+      "h.uses.cta": "Explica'ns el teu cas",
+      "h.uses.alt": "Carpa d'arc amb moll de càrrega, un camió i una carretona elevadora",
+      "h.gan.alt": "Interior d'una carpa ramadera amb vedells sobre jaç de palla, menjadores laterals i lluernari zenital",
+      "h.gan.title": "Carpes per a vedells i bestiar",
+      "h.gan.lead": "Un espai ampli, lluminós i ventilat, muntat en dies i sense obres.",
+      "h.tec.title": "Enginyeria darrere de cada carpa",
+      "h.tec.cfg": "Configura la teva carpa <span>Fitxa tècnica</span>",
+      "h.f.1t": "Estructura",
+      "h.f.1d": "Acer galvanitzat",
+      "h.f.2t": "Coberta",
+      "h.f.2d": "Lona tècnica de PVC",
+      "h.f.3t": "Llum lliure",
+      "h.f.3d": "De 10 a 20 m, sense pilars interiors",
+      "h.f.4t": "Llargada",
+      "h.f.4d": "Ampliable per mòduls",
+      "h.f.5t": "Càrregues",
+      "h.f.5d": "Neu: EN 1991‑1‑3<br />Vent: EN 1991‑1‑4",
+      "h.f.6t": "Tancaments",
+      "h.f.6d": "Lona, panell o mixtos",
+      "h.f.7t": "Accessos",
+      "h.f.7d": "Portes enrotllables o corredisses",
+      "h.f.8t": "Extres",
+      "h.f.8d": "Canals, il·luminació, ventilació",
+      "h.f.9t": "Ancoratge",
+      "h.f.9d": "Sobre solera de formigó o asfalt",
+      "h.tec.cta": "Calcular la meva carpa",
+      "h.team.title": "Feta per enginyers",
+      "h.team.text": "Cada carpa la calcula un enginyer per al vent i la neu del lloc on estarà. El mateix equip t'acompanya des de la primera trucada fins al muntatge, i et deixa per escrit el càlcul de la teva estructura.",
+      "h.proc.frase": "Muntada en un dia, no en mesos.",
+      "h.ba.cap": "Arrossega per comparar. Sense fonaments profunds ni obra civil: s'ancora al terreny preparat i es munta.",
+      "h.proc.title": "De la idea a la carpa muntada",
+      "h.end.title": "Parlem de la teva carpa?",
+      "h.end.sub": "Explica'ns què necessites i et responem en 24–48 h feineres.",
+      "h.foot.about": "Enginyeria, subministrament i muntatge de carpes industrials a Catalunya.",
       "meta.title": "Castelvar · Carpes i naus industrials, ens encarreguem de tot",
       "meta.desc": "Carpes d'alumini i naus tèxtils per a magatzem, indústria i agricultura. Enginyers, càlcul segons l'Eurocodi, transport i muntatge amb preu tancat. Demana pressupost sense compromís.",
       "meta.ogdesc": "Enginyeria, fabricació, transport i muntatge amb preu tancat. Demana pressupost sense compromís.",
@@ -293,6 +355,68 @@
     },
 
     fr: {
+      // ---- Home actual (index.html) ----
+      "h.meta.title": "Castelvar · Tentes industrielles, nous nous occupons de tout",
+      "h.meta.desc": "Tentes en acier galvanisé et toile technique pour le stockage, l'industrie et l'agriculture. Ingénieurs, calcul selon l'Eurocode, transport et montage à prix fixe.",
+      "h.meta.ogdesc": "Tentes en acier galvanisé conçues par des ingénieurs. Calcul, transport et montage à prix fixe. Demandez un devis sans engagement.",
+      "h.nav.uses": "Usages",
+      "h.nav.tech": "Technique",
+      "h.nav.faq": "Questions",
+      "h.hero.eyebrow": "Tentes industrielles conçues par des ingénieurs",
+      "h.hero.title": "Plus d'espace couvert, sans travaux et à prix fixe.",
+      "h.hero.lead": "Nous calculons, fournissons, transportons et montons des tentes en acier galvanisé et toile technique pour le stockage, l'industrie et l'agriculture dans toute la Catalogne.",
+      "h.hero.p1": "Conçue par des ingénieurs",
+      "h.hero.p2": "Sans permis*",
+      "h.hero.p3": "Montage en 1 jour",
+      "h.hero.note": "*Selon la mairie et l'usage. Nous nous en occupons pour vous.",
+      "h.uses.title": "Tout ce qui tient dessous",
+      "h.uses.lead": "Arcs en acier galvanisé et toile technique en PVC, sur mesure pour votre espace.",
+      "h.uses.1t": "Stockage et logistique",
+      "h.uses.1s": "Palettes, stock et quais de chargement à l'abri.",
+      "h.uses.2t": "Industrie et ateliers",
+      "h.uses.2s": "Production avec portes enroulables, gouttières et éclairage.",
+      "h.uses.3t": "Agriculture",
+      "h.uses.3s": "Machines, paille et fourrage, à l'abri de la pluie.",
+      "h.uses.4t": "Élevage",
+      "h.uses.4s": "Tentes ventilées pour veaux et bétail. <a href=\"#ganaderia\">En savoir plus</a>",
+      "h.uses.5t": "Bois et matériaux",
+      "h.uses.5s": "Séchage et stockage à l'abri, sans travaux.",
+      "h.uses.6t": "Temporaire",
+      "h.uses.6s": "Chantiers et campagnes. Elle se démonte et se déplace.",
+      "h.uses.cta": "Parlez-nous de votre projet",
+      "h.uses.alt": "Tente en arc avec quai de chargement, un camion et un chariot élévateur",
+      "h.gan.alt": "Intérieur d'une tente d'élevage avec des veaux sur litière de paille, des mangeoires latérales et un lanterneau",
+      "h.gan.title": "Tentes pour veaux et bétail",
+      "h.gan.lead": "Un espace vaste, lumineux et ventilé, monté en quelques jours et sans travaux.",
+      "h.tec.title": "De l'ingénierie derrière chaque tente",
+      "h.tec.cfg": "Configurez votre tente <span>Fiche technique</span>",
+      "h.f.1t": "Structure",
+      "h.f.1d": "Acier galvanisé",
+      "h.f.2t": "Couverture",
+      "h.f.2d": "Toile technique en PVC",
+      "h.f.3t": "Portée libre",
+      "h.f.3d": "De 10 à 20 m, sans poteaux intérieurs",
+      "h.f.4t": "Longueur",
+      "h.f.4d": "Extensible par modules",
+      "h.f.5t": "Charges",
+      "h.f.5d": "Neige : EN 1991‑1‑3<br />Vent : EN 1991‑1‑4",
+      "h.f.6t": "Bardages",
+      "h.f.6d": "Toile, panneau ou mixtes",
+      "h.f.7t": "Accès",
+      "h.f.7d": "Portes enroulables ou coulissantes",
+      "h.f.8t": "Options",
+      "h.f.8d": "Gouttières, éclairage, ventilation",
+      "h.f.9t": "Ancrage",
+      "h.f.9d": "Sur dalle en béton ou enrobé",
+      "h.tec.cta": "Calculer ma tente",
+      "h.team.title": "Conçue par des ingénieurs",
+      "h.team.text": "Chaque tente est calculée par un ingénieur pour le vent et la neige du site où elle sera installée. La même équipe vous accompagne du premier appel jusqu'au montage, et vous remet par écrit le calcul de votre structure.",
+      "h.proc.frase": "Montée en un jour, pas en plusieurs mois.",
+      "h.ba.cap": "Faites glisser pour comparer. Sans fondations profondes ni génie civil : elle s'ancre sur le terrain préparé et se monte.",
+      "h.proc.title": "De l'idée à la tente montée",
+      "h.end.title": "Et si on parlait de votre tente ?",
+      "h.end.sub": "Dites-nous ce dont vous avez besoin et nous vous répondons sous 24 à 48 h ouvrées.",
+      "h.foot.about": "Ingénierie, fourniture et montage de tentes industrielles en Catalogne.",
       "meta.title": "Castelvar · Tentes et bâtiments industriels, nous nous occupons de tout",
       "meta.desc": "Tentes en aluminium et bâtiments textiles pour le stockage, l'industrie et l'agriculture. Ingénieurs, calcul selon l'Eurocode, transport et montage à prix ferme. Demandez un devis sans engagement.",
       "meta.ogdesc": "Ingénierie, fabrication, transport et montage à prix ferme. Demandez un devis sans engagement.",
@@ -525,6 +649,68 @@
     },
 
     en: {
+      // ---- Home actual (index.html) ----
+      "h.meta.title": "Castelvar · Industrial tents, we take care of everything",
+      "h.meta.desc": "Galvanised steel tents with technical fabric for storage, industry and agriculture. Engineers, Eurocode structural design, transport and installation at a fixed price.",
+      "h.meta.ogdesc": "Galvanised steel tents designed by engineers. Structural design, transport and installation at a fixed price. Request a free, no-obligation quote.",
+      "h.nav.uses": "Uses",
+      "h.nav.tech": "Engineering",
+      "h.nav.faq": "FAQ",
+      "h.hero.eyebrow": "Industrial tents designed by engineers",
+      "h.hero.title": "More covered space, no construction work, fixed price.",
+      "h.hero.lead": "We design, supply, transport and install galvanised steel tents with technical fabric for storage, industry and agriculture throughout Catalonia.",
+      "h.hero.p1": "Designed by engineers",
+      "h.hero.p2": "No permit needed*",
+      "h.hero.p3": "Installed in 1 day",
+      "h.hero.note": "*Depends on the local council and use. We handle it for you.",
+      "h.uses.title": "What fits underneath",
+      "h.uses.lead": "Galvanised steel arches and technical PVC fabric, made to fit your space.",
+      "h.uses.1t": "Storage and logistics",
+      "h.uses.1s": "Pallets, stock and loading docks under cover.",
+      "h.uses.2t": "Industry and workshops",
+      "h.uses.2s": "Production areas with roller doors, gutters and lighting.",
+      "h.uses.3t": "Agriculture",
+      "h.uses.3s": "Machinery, straw and fodder, out of the rain.",
+      "h.uses.4t": "Livestock",
+      "h.uses.4s": "Ventilated tents for calves and livestock. <a href=\"#ganaderia\">Learn more</a>",
+      "h.uses.5t": "Timber and materials",
+      "h.uses.5s": "Drying and storage under cover, no construction work.",
+      "h.uses.6t": "Temporary",
+      "h.uses.6s": "Building sites and seasonal campaigns. Take it down and move it.",
+      "h.uses.cta": "Tell us about your project",
+      "h.uses.alt": "Arch tent with a loading dock, a lorry and a forklift",
+      "h.gan.alt": "Inside a livestock tent with calves on straw bedding, side feeders and a ridge skylight",
+      "h.gan.title": "Tents for calves and livestock",
+      "h.gan.lead": "A spacious, bright and well-ventilated space, installed in days with no construction work.",
+      "h.tec.title": "Engineering behind every tent",
+      "h.tec.cfg": "Configure your tent <span>Specifications</span>",
+      "h.f.1t": "Structure",
+      "h.f.1d": "Galvanised steel",
+      "h.f.2t": "Roof",
+      "h.f.2d": "Technical PVC fabric",
+      "h.f.3t": "Clear span",
+      "h.f.3d": "10 to 20 m, no interior columns",
+      "h.f.4t": "Length",
+      "h.f.4d": "Extendable in modules",
+      "h.f.5t": "Loads",
+      "h.f.5d": "Snow: EN 1991‑1‑3<br />Wind: EN 1991‑1‑4",
+      "h.f.6t": "Side walls",
+      "h.f.6d": "Fabric, panels or mixed",
+      "h.f.7t": "Access",
+      "h.f.7d": "Roller or sliding doors",
+      "h.f.8t": "Extras",
+      "h.f.8d": "Gutters, lighting, ventilation",
+      "h.f.9t": "Anchoring",
+      "h.f.9d": "On a concrete or asphalt slab",
+      "h.tec.cta": "Design my tent",
+      "h.team.title": "Designed by engineers",
+      "h.team.text": "Every tent is designed by an engineer for the wind and snow at the site where it will stand. The same team is with you from the first call to installation, and gives you the structural calculations in writing.",
+      "h.proc.frase": "Up in a day, not in months.",
+      "h.ba.cap": "Drag to compare. No deep foundations or civil works: it is anchored to the prepared ground and assembled.",
+      "h.proc.title": "From idea to finished tent",
+      "h.end.title": "Shall we talk about your tent?",
+      "h.end.sub": "Tell us what you need and we'll get back to you within 1–2 working days.",
+      "h.foot.about": "Engineering, supply and installation of industrial tents in Catalonia.",
       "meta.title": "Castelvar · Industrial tents and buildings, we take care of everything",
       "meta.desc": "Aluminium tents and fabric buildings for storage, industry and agriculture. Engineers, Eurocode structural design, transport and installation at a fixed price. Request a free, no-obligation quote.",
       "meta.ogdesc": "Engineering, manufacturing, transport and installation at a fixed price. Request a free, no-obligation quote.",
@@ -851,38 +1037,42 @@
     listeners.forEach(function (fn) { fn(lang); });
   }
 
-  // ---------- Selector de idioma (pie) ----------
-  var root, btn, menu;
+  // ---------- Selector de idioma: todos los .lang de la página (pie y, en la home, también cabecera) ----------
+  var switchers = [];
   function langInfo(code) {
     for (var i = 0; i < LANGS.length; i++) if (LANGS[i].code === code) return LANGS[i];
     return LANGS[0];
   }
   function updateSwitcher() {
-    if (!root) return;
     var info = langInfo(current);
-    btn.querySelector(".lang-flag").innerHTML = FLAGS[info.code];
-    btn.querySelector(".lang-name").textContent = info.name;
-    btn.setAttribute("aria-label", t("foot.lang") + ": " + info.name);
-    menu.querySelectorAll("button").forEach(function (b) {
-      b.setAttribute("aria-checked", b.dataset.lang === current ? "true" : "false");
+    switchers.forEach(function (sw) {
+      sw.btn.querySelector(".lang-flag").innerHTML = FLAGS[info.code];
+      sw.btn.querySelector(".lang-name").textContent = info.name;
+      sw.btn.setAttribute("aria-label", t("foot.lang") + ": " + info.name);
+      sw.menu.querySelectorAll("button").forEach(function (b) {
+        b.setAttribute("aria-checked", b.dataset.lang === current ? "true" : "false");
+      });
     });
   }
-  function open(focusFirst) {
-    menu.hidden = false;
-    btn.setAttribute("aria-expanded", "true");
-    var target = menu.querySelector('[aria-checked="true"]') || menu.querySelector("button");
-    if (focusFirst && target) target.focus();
-  }
-  function close(refocus) {
-    menu.hidden = true;
-    btn.setAttribute("aria-expanded", "false");
-    if (refocus) btn.focus();
-  }
-  function buildSwitcher() {
-    root = document.getElementById("lang");
-    if (!root) return;
-    btn = root.querySelector(".lang-btn");
-    menu = root.querySelector(".lang-menu");
+  function buildSwitcher(root, n) {
+    var btn = root.querySelector(".lang-btn");
+    var menu = root.querySelector(".lang-menu");
+    if (!btn || !menu) return;
+    if (!menu.id) menu.id = "lang-menu-" + n;
+    btn.setAttribute("aria-controls", menu.id);
+    function open(focusFirst) {
+      switchers.forEach(function (sw) { if (sw.menu !== menu) sw.close(false); });
+      menu.hidden = false;
+      btn.setAttribute("aria-expanded", "true");
+      var target = menu.querySelector('[aria-checked="true"]') || menu.querySelector("button");
+      if (focusFirst && target) target.focus();
+    }
+    function close(refocus) {
+      menu.hidden = true;
+      btn.setAttribute("aria-expanded", "false");
+      if (refocus) btn.focus();
+    }
+    switchers.push({ btn: btn, menu: menu, close: close });
     menu.innerHTML = LANGS.map(function (l) {
       return (
         '<li role="none"><button type="button" role="menuitemradio" lang="' + l.code + '" data-lang="' + l.code + '">' +
@@ -934,6 +1124,6 @@
     onChange: function (fn) { listeners.push(fn); },
   };
 
-  buildSwitcher();
+  document.querySelectorAll(".lang").forEach(buildSwitcher);
   set(detect(), false);
 })();

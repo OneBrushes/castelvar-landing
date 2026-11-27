@@ -3,15 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Castelvar · Carpas industriales, nos encargamos de todo</title>
+    <title data-i18n="h.meta.title">Castelvar · Carpas industriales, nos encargamos de todo</title>
     <meta
       name="description"
+      data-i18n-attr="content:h.meta.desc"
       content="Carpas de acero galvanizado y lona técnica para almacén, industria y agricultura. Ingenieros, cálculo según Eurocódigo, transporte y montaje con precio cerrado."
     />
     <meta name="theme-color" content="#1F3A5F" />
     <link rel="canonical" href="https://castelvar.com/" />
-    <meta property="og:title" content="Castelvar · Carpas industriales, nos encargamos de todo" />
-    <meta property="og:description" content="Carpas de acero galvanizado hechas por ingenieros. Cálculo, transporte y montaje con precio cerrado. Pide presupuesto sin compromiso." />
+    <meta property="og:title" data-i18n-attr="content:h.meta.title" content="Castelvar · Carpas industriales, nos encargamos de todo" />
+    <meta property="og:description" data-i18n-attr="content:h.meta.ogdesc" content="Carpas de acero galvanizado hechas por ingenieros. Cálculo, transporte y montaje con precio cerrado. Pide presupuesto sin compromiso." />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://castelvar.com/img/hero-carpa-1376.webp" />
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
@@ -33,20 +34,29 @@
     <script src="config.js"></script>
   </head>
   <body>
-    <a class="skip" href="#presupuesto">Ir al formulario de presupuesto</a>
+    <a class="skip" href="#presupuesto" data-i18n="skip">Ir al formulario de presupuesto</a>
 
     <header class="site-header" id="cabecera">
       <div class="header-bar">
       <div class="wrap header-inner">
-        <a href="#inicio" class="brand" aria-label="Castelvar, inicio"><img class="logo-dark" src="assets/logo.svg" alt="Castelvar" width="168" height="38" /><img class="logo-light" src="assets/logo-blanco.svg" alt="" width="160" height="37" /></a>
-        <nav class="nav" aria-label="Principal">
-          <a href="#usos">Usos</a>
-          <a href="#tecnica">Técnica</a>
-          <a href="#proceso">Cómo trabajamos</a>
-          <a href="#preguntas">Preguntas</a>
+        <a href="#inicio" class="brand" aria-label="Castelvar, inicio" data-i18n-attr="aria-label:a11y.home"><img class="logo-dark" src="assets/logo.svg" alt="Castelvar" width="168" height="38" /><img class="logo-light" src="assets/logo-blanco.svg" alt="" width="160" height="37" /></a>
+        <nav class="nav" aria-label="Principal" data-i18n-attr="aria-label:a11y.mainnav">
+          <a href="#usos" data-i18n="h.nav.uses">Usos</a>
+          <a href="#tecnica" data-i18n="h.nav.tech">Técnica</a>
+          <a href="#proceso" data-i18n="nav.process">Cómo trabajamos</a>
+          <a href="#preguntas" data-i18n="h.nav.faq">Preguntas</a>
         </nav>
         <a class="header-phone" id="header-phone" hidden></a>
-        <a href="#presupuesto" class="btn btn-primary btn-sm">Pedir presupuesto</a>
+        <!-- Selector de idioma (lo monta assets/i18n.js) -->
+        <div class="lang lang-top">
+          <button type="button" class="lang-btn" aria-haspopup="menu" aria-expanded="false">
+            <span class="lang-flag" aria-hidden="true"></span>
+            <span class="lang-name">Español</span>
+            <svg class="lang-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-menu" role="menu" hidden></ul>
+        </div>
+        <a href="#presupuesto" class="btn btn-primary btn-sm" data-i18n="cta.quote">Pedir presupuesto</a>
       </div>
       </div>
     </header>
@@ -67,105 +77,102 @@
         </div>
         <div class="wrap hero-inner">
           <div class="hero-copy">
-            <p class="eyebrow">Carpas industriales hechas por ingenieros</p>
-            <h1>Más espacio cubierto, sin obra y con precio cerrado.</h1>
-            <p class="lead">
-              Calculamos, suministramos, transportamos y montamos carpas de acero galvanizado y lona técnica para almacén, industria y agricultura en toda
-              Cataluña.
-            </p>
+            <p class="eyebrow" data-i18n="h.hero.eyebrow">Carpas industriales hechas por ingenieros</p>
+            <h1 data-i18n="h.hero.title">Más espacio cubierto, sin obra y con precio cerrado.</h1>
+            <p class="lead" data-i18n="h.hero.lead">Calculamos, suministramos, transportamos y montamos carpas de acero galvanizado y lona técnica para almacén, industria y agricultura en toda Cataluña.</p>
             <ul class="hero-points">
-              <li>Hecha por ingenieros</li>
-              <li>Sin licencia*</li>
-              <li>Montaje en 1 día</li>
+              <li data-i18n="h.hero.p1">Hecha por ingenieros</li>
+              <li data-i18n="h.hero.p2">Sin licencia*</li>
+              <li data-i18n="h.hero.p3">Montaje en 1 día</li>
             </ul>
           </div>
 
           <!-- Formulario de presupuesto en 3 pasos (mismo marcado y mismos value que la home: es lo que llega al CRM) -->
           <div class="quote-card" id="presupuesto">
             <div class="quote-head">
-              <h2>Pide tu presupuesto</h2>
-              <p>Gratis y sin compromiso · <span id="response-time">te respondemos en 24–48 h laborables</span></p>
+              <h2 data-i18n="quote.title">Pide tu presupuesto</h2>
+              <p><span data-i18n="quote.free">Gratis y sin compromiso</span> · <span id="response-time">te respondemos en 24–48 h laborables</span></p>
               <div class="progress" aria-hidden="true"><span id="progress-bar"></span></div>
             </div>
 
             <form id="lead-form" novalidate>
               <!-- Paso 1 -->
               <fieldset class="step" data-step="1">
-                <legend>1 · ¿Para qué la necesitas?</legend>
+                <legend data-i18n="form.s1">1 · ¿Para qué la necesitas?</legend>
                 <div class="choice-grid" role="radiogroup">
-                  <label class="choice"><input type="radio" name="use_case" value="Almacén / logística" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 3.5h7v5.5h-7z"/><path d="M4 9h7.5v7.5H4zM12.5 9H20v7.5h-7.5z"/><path d="M3 16.5h18M3 19.5h18M5 16.5v3M12 16.5v3M19 16.5v3"/></svg><span>Almacén / logística</span></span></label>
-                  <label class="choice"><input type="radio" name="use_case" value="Industria / taller" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5V11l5 3v-3l5 3v-3l5 3V4h3v16.5z"/><path d="M7 17.5h2M11.5 17.5h2M16 17.5h2"/></svg><span>Industria / taller</span></span></label>
-                  <label class="choice"><input type="radio" name="use_case" value="Agricultura / ganadería" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V8.5"/><path d="M12 8.5C10.6 7.4 10.3 5.6 12 3c1.7 2.6 1.4 4.4 0 5.5z"/><path d="M12 12.5c-2.6 0-4-1.5-4-4 2.6 0 4 1.5 4 4zM12 12.5c2.6 0 4-1.5 4-4-2.6 0-4 1.5-4 4z"/><path d="M12 17c-2.6 0-4-1.5-4-4 2.6 0 4 1.5 4 4zM12 17c2.6 0 4-1.5 4-4-2.6 0-4 1.5-4 4z"/></svg><span>Agrícola / ganadera</span></span></label>
-                  <label class="choice"><input type="radio" name="use_case" value="Madera / materiales" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="16" r="3.75"/><circle cx="16.5" cy="16" r="3.75"/><circle cx="12" cy="8.25" r="3.75"/><circle cx="7.5" cy="16" r="1.2"/><circle cx="16.5" cy="16" r="1.2"/><circle cx="12" cy="8.25" r="1.2"/></svg><span>Madera / materiales</span></span></label>
-                  <label class="choice"><input type="radio" name="use_case" value="Temporal / eventos" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20 12 6.5 20.5 20"/><path d="M12 6.5 9.5 20M12 6.5 14.5 20"/><path d="M12 6.5V3l3 1.2L12 5.4"/><path d="M2 20h20"/></svg><span>Temporal / eventos</span></span></label>
-                  <label class="choice"><input type="radio" name="use_case" value="Otro" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><path d="M16.75 13.75v6M13.75 16.75h6"/></svg><span>Otro uso</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Almacén / logística" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8.5 3.5h7v5.5h-7z"/><path d="M4 9h7.5v7.5H4zM12.5 9H20v7.5h-7.5z"/><path d="M3 16.5h18M3 19.5h18M5 16.5v3M12 16.5v3M19 16.5v3"/></svg><span data-i18n="uc.storage">Almacén / logística</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Industria / taller" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20.5V11l5 3v-3l5 3v-3l5 3V4h3v16.5z"/><path d="M7 17.5h2M11.5 17.5h2M16 17.5h2"/></svg><span data-i18n="uc.industry">Industria / taller</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Agricultura / ganadería" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21V8.5"/><path d="M12 8.5C10.6 7.4 10.3 5.6 12 3c1.7 2.6 1.4 4.4 0 5.5z"/><path d="M12 12.5c-2.6 0-4-1.5-4-4 2.6 0 4 1.5 4 4zM12 12.5c2.6 0 4-1.5 4-4-2.6 0-4 1.5-4 4z"/><path d="M12 17c-2.6 0-4-1.5-4-4 2.6 0 4 1.5 4 4zM12 17c2.6 0 4-1.5 4-4-2.6 0-4 1.5-4 4z"/></svg><span data-i18n="uc.agri">Agrícola / ganadera</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Madera / materiales" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7.5" cy="16" r="3.75"/><circle cx="16.5" cy="16" r="3.75"/><circle cx="12" cy="8.25" r="3.75"/><circle cx="7.5" cy="16" r="1.2"/><circle cx="16.5" cy="16" r="1.2"/><circle cx="12" cy="8.25" r="1.2"/></svg><span data-i18n="uc.wood">Madera / materiales</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Temporal / eventos" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 20 12 6.5 20.5 20"/><path d="M12 6.5 9.5 20M12 6.5 14.5 20"/><path d="M12 6.5V3l3 1.2L12 5.4"/><path d="M2 20h20"/></svg><span data-i18n="uc.temp">Temporal / eventos</span></span></label>
+                  <label class="choice"><input type="radio" name="use_case" value="Otro" /><span class="choice-box"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1"/><path d="M16.75 13.75v6M13.75 16.75h6"/></svg><span data-i18n="uc.other">Otro uso</span></span></label>
                 </div>
-                <button type="button" class="btn btn-primary btn-block" data-next>Continuar</button>
+                <button type="button" class="btn btn-primary btn-block" data-next data-i18n="btn.continue">Continuar</button>
               </fieldset>
 
               <!-- Paso 2 -->
               <fieldset class="step" data-step="2" hidden>
-                <legend>2 · Medidas y ubicación</legend>
+                <legend data-i18n="form.s2">2 · Medidas y ubicación</legend>
                 <div class="grid-2">
-                  <label><span>Ancho aprox. (m)</span><input name="width" inputmode="decimal" enterkeyhint="next" placeholder="p. ej. 15" maxlength="8" /></label>
-                  <label><span>Largo aprox. (m)</span><input name="length" inputmode="decimal" enterkeyhint="next" placeholder="p. ej. 30" maxlength="8" /></label>
+                  <label><span data-i18n="f.width">Ancho aprox. (m)</span><input name="width" data-i18n-attr="placeholder:ph.width" inputmode="decimal" enterkeyhint="next" placeholder="p. ej. 15" maxlength="8" /></label>
+                  <label><span data-i18n="f.length">Largo aprox. (m)</span><input name="length" data-i18n-attr="placeholder:ph.length" inputmode="decimal" enterkeyhint="next" placeholder="p. ej. 30" maxlength="8" /></label>
                 </div>
-                <p class="sizes" aria-label="Medidas habituales">
-                  <span>Habituales:</span>
+                <p class="sizes" aria-label="Medidas habituales" data-i18n-attr="aria-label:sizes.aria">
+                  <span data-i18n="sizes.label">Habituales:</span>
                   <button type="button" data-size="10x15">10×15</button>
                   <button type="button" data-size="10x20">10×20</button>
                   <button type="button" data-size="15x30">15×30</button>
                   <button type="button" data-size="20x40">20×40</button>
-                  <button type="button" data-size="">No lo sé</button>
+                  <button type="button" data-size="" data-i18n="sizes.unknown">No lo sé</button>
                 </p>
                 <div class="grid-2">
-                  <label><span>Población de la obra</span><input name="city" autocomplete="address-level2" autocapitalize="words" enterkeyhint="next" maxlength="120" /></label>
+                  <label><span data-i18n="f.city">Población de la obra</span><input name="city" autocomplete="address-level2" autocapitalize="words" enterkeyhint="next" maxlength="120" /></label>
                   <label
-                    ><span>Provincia</span>
+                    ><span data-i18n="f.province">Provincia</span>
                     <select name="province">
                       <option value="">—</option>
                       <option value="Barcelona">Barcelona</option>
                       <option value="Girona">Girona</option>
                       <option value="Lleida">Lleida</option>
                       <option value="Tarragona">Tarragona</option>
-                      <option value="Otra">Otra</option>
+                      <option value="Otra" data-i18n="opt.other">Otra</option>
                     </select>
                   </label>
                 </div>
                 <label
-                  ><span>¿Para cuándo?</span>
+                  ><span data-i18n="f.when">¿Para cuándo?</span>
                   <select name="timeframe">
                     <option value="">—</option>
-                    <option value="Lo antes posible">Lo antes posible</option>
-                    <option value="En 1–3 meses">En 1–3 meses</option>
-                    <option value="En 3–6 meses">En 3–6 meses</option>
-                    <option value="Solo me estoy informando">Solo me estoy informando</option>
+                    <option value="Lo antes posible" data-i18n="tf.asap">Lo antes posible</option>
+                    <option value="En 1–3 meses" data-i18n="tf.1-3">En 1–3 meses</option>
+                    <option value="En 3–6 meses" data-i18n="tf.3-6">En 3–6 meses</option>
+                    <option value="Solo me estoy informando" data-i18n="tf.info">Solo me estoy informando</option>
                   </select>
                 </label>
                 <div class="step-nav">
-                  <button type="button" class="btn btn-ghost" data-prev>Atrás</button>
-                  <button type="button" class="btn btn-primary" data-next>Continuar</button>
+                  <button type="button" class="btn btn-ghost" data-prev data-i18n="btn.back">Atrás</button>
+                  <button type="button" class="btn btn-primary" data-next data-i18n="btn.continue">Continuar</button>
                 </div>
               </fieldset>
 
               <!-- Paso 3 -->
               <fieldset class="step" data-step="3" hidden>
-                <legend>3 · ¿Cómo te contactamos?</legend>
+                <legend data-i18n="form.s3">3 · ¿Cómo te contactamos?</legend>
                 <div class="grid-2">
-                  <label><span>Nombre *</span><input name="name" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="120" /></label>
-                  <label><span>Empresa</span><input name="company" autocomplete="organization" maxlength="160" /></label>
-                  <label><span>Teléfono</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" maxlength="40" /></label>
-                  <label><span>Email</span><input name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" maxlength="200" /></label>
+                  <label><span data-i18n="f.name">Nombre *</span><input name="name" autocomplete="name" autocapitalize="words" enterkeyhint="next" required maxlength="120" /></label>
+                  <label><span data-i18n="f.company">Empresa</span><input name="company" autocomplete="organization" maxlength="160" /></label>
+                  <label><span data-i18n="f.phone">Teléfono</span><input name="phone" type="tel" inputmode="tel" autocomplete="tel" enterkeyhint="next" maxlength="40" /></label>
+                  <label><span data-i18n="f.email">Email</span><input name="email" type="email" inputmode="email" autocomplete="email" autocapitalize="off" spellcheck="false" enterkeyhint="next" maxlength="200" /></label>
                 </div>
-                <label><span>Algo más (opcional)</span><textarea name="message" rows="3" maxlength="3000" placeholder="Terreno, accesos, puertas, cerramientos…"></textarea></label>
+                <label><span data-i18n="f.msg">Algo más (opcional)</span><textarea data-i18n-attr="placeholder:ph.msg" name="message" rows="3" maxlength="3000" placeholder="Terreno, accesos, puertas, cerramientos…"></textarea></label>
                 <label class="hp" aria-hidden="true">Web<input name="website" tabindex="-1" autocomplete="off" /></label>
                 <label class="check">
                   <input type="checkbox" name="consent" value="on" required />
-                  <span>Acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>. Solo usaremos tus datos para responderte.</span>
+                  <span data-i18n-html="consent">Acepto la <a href="privacidad.html" target="_blank">política de privacidad</a>. Solo usaremos tus datos para responderte.</span>
                 </label>
                 <div class="step-nav">
-                  <button type="button" class="btn btn-ghost" data-prev>Atrás</button>
-                  <button type="submit" class="btn btn-primary">Enviar solicitud</button>
+                  <button type="button" class="btn btn-ghost" data-prev data-i18n="btn.back">Atrás</button>
+                  <button type="submit" class="btn btn-primary" data-i18n="btn.send">Enviar solicitud</button>
                 </div>
               </fieldset>
               <p class="form-status" role="status" aria-live="polite"></p>
@@ -173,24 +180,24 @@
 
             <div class="thanks" id="thanks" hidden tabindex="-1">
               <div class="thanks-icon"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="m8 12.25 2.75 2.75L16 9.75"/></svg></div>
-              <h3>¡Solicitud recibida!</h3>
-              <p>Un ingeniero revisará tu caso y te contactará <span id="thanks-time">en 24–48 h laborables</span>.</p>
+              <h3 data-i18n="thanks.title">¡Solicitud recibida!</h3>
+              <p><span data-i18n="thanks.text">Un ingeniero revisará tu caso y te contactará</span> <span id="thanks-time">en 24–48 h laborables</span>.</p>
               <p class="thanks-direct" id="thanks-direct"></p>
             </div>
-            <p class="quote-foot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg><span>Tus datos no se ceden a terceros.</span></p>
+            <p class="quote-foot"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/><path d="M12 14.5v2.5"/></svg><span data-i18n="quote.foot">Tus datos no se ceden a terceros.</span></p>
           </div>
         </div>
         <!-- Nota del asterisco: abajo del todo de la sección (en escritorio y en móvil) -->
-        <p class="wrap hero-note"><a href="#permisos">*Según ayuntamiento y uso. Te lo gestionamos nosotros.</a></p>
+        <p class="wrap hero-note"><a href="#permisos" data-i18n="h.hero.note">*Según ayuntamiento y uso. Te lo gestionamos nosotros.</a></p>
       </section>
 
       <!-- Franja de garantías (parte del hero) -->
-      <div class="assurances" id="garantias" data-zone="garantias" role="region" aria-label="Por qué confiar en nosotros">
+      <div class="assurances" id="garantias" data-zone="garantias" role="region" aria-label="Por qué confiar en nosotros" data-i18n-attr="aria-label:as.aria">
         <div class="wrap assurances-inner">
-          <div><strong>Ingenieros</strong><span>Proyecto y cálculo propios</span></div>
-          <div><strong>Eurocódigo</strong><span>Nieve y viento (EN 1991)</span></div>
-          <div><strong>Precio cerrado</strong><span>Transporte y montaje incluidos</span></div>
-          <div><strong>De principio a fin</strong><span>Un solo interlocutor</span></div>
+          <div><strong data-i18n="as.1t">Ingenieros</strong><span data-i18n="as.1s">Proyecto y cálculo propios</span></div>
+          <div><strong data-i18n="as.2t">Eurocódigo</strong><span data-i18n="as.2s">Nieve y viento (EN 1991)</span></div>
+          <div><strong data-i18n="as.3t">Precio cerrado</strong><span data-i18n="as.3s">Transporte y montaje incluidos</span></div>
+          <div><strong data-i18n="as.4t">De principio a fin</strong><span data-i18n="as.4s">Un solo interlocutor</span></div>
         </div>
       </div>
 
@@ -198,17 +205,17 @@
       <section class="usos" id="usos">
         <div class="wrap usos-grid">
           <div class="usos-copy">
-            <h2>Lo que cabe debajo</h2>
-            <p class="section-lead">Arcos de acero galvanizado y lona técnica de PVC, a la medida de tu espacio.</p>
+            <h2 data-i18n="h.uses.title">Lo que cabe debajo</h2>
+            <p class="section-lead" data-i18n="h.uses.lead">Arcos de acero galvanizado y lona técnica de PVC, a la medida de tu espacio.</p>
             <ul class="usos-list">
-              <li><strong>Almacén y logística</strong><span>Palets, stock y muelles de carga a cubierto.</span></li>
-              <li><strong>Industria y talleres</strong><span>Producción con puertas enrollables, canalones y luz.</span></li>
-              <li><strong>Agricultura</strong><span>Maquinaria, paja y forraje, fuera de la lluvia.</span></li>
-              <li><strong>Ganadería</strong><span>Carpas ventiladas para terneros y ganado. <a href="#ganaderia">Ver más</a></span></li>
-              <li><strong>Madera y materiales</strong><span>Secado y acopio a cubierto, sin obra.</span></li>
-              <li><strong>Temporal</strong><span>Obras y campañas. Se desmonta y se lleva.</span></li>
+              <li><strong data-i18n="h.uses.1t">Almacén y logística</strong><span data-i18n="h.uses.1s">Palets, stock y muelles de carga a cubierto.</span></li>
+              <li><strong data-i18n="h.uses.2t">Industria y talleres</strong><span data-i18n="h.uses.2s">Producción con puertas enrollables, canalones y luz.</span></li>
+              <li><strong data-i18n="h.uses.3t">Agricultura</strong><span data-i18n="h.uses.3s">Maquinaria, paja y forraje, fuera de la lluvia.</span></li>
+              <li><strong data-i18n="h.uses.4t">Ganadería</strong><span data-i18n-html="h.uses.4s">Carpas ventiladas para terneros y ganado. <a href="#ganaderia">Ver más</a></span></li>
+              <li><strong data-i18n="h.uses.5t">Madera y materiales</strong><span data-i18n="h.uses.5s">Secado y acopio a cubierto, sin obra.</span></li>
+              <li><strong data-i18n="h.uses.6t">Temporal</strong><span data-i18n="h.uses.6s">Obras y campañas. Se desmonta y se lleva.</span></li>
             </ul>
-            <a href="#presupuesto" class="link-arrow">Cuéntanos tu caso</a>
+            <a href="#presupuesto" class="link-arrow" data-i18n="h.uses.cta">Cuéntanos tu caso</a>
           </div>
           <figure class="usos-photo frame">
             <img
@@ -218,7 +225,7 @@
               width="1376"
               height="768"
               loading="lazy"
-              alt="Carpa de arco con muelle de carga, un camión y una carretilla elevadora"
+              data-i18n-attr="alt:h.uses.alt" alt="Carpa de arco con muelle de carga, un camión y una carretilla elevadora"
             />
           </figure>
         </div>
@@ -235,19 +242,19 @@
               width="1600"
               height="893"
               loading="lazy"
-              alt="Interior de una carpa ganadera con terneros sobre cama de paja, comederos laterales y lucernario cenital"
+              data-i18n-attr="alt:h.gan.alt" alt="Interior de una carpa ganadera con terneros sobre cama de paja, comederos laterales y lucernario cenital"
             />
           </figure>
           <div class="ganaderia-text">
-            <h2>Carpas para terneros y ganado</h2>
-            <p class="section-lead">Un espacio amplio, luminoso y ventilado, montado en días y sin obra.</p>
+            <h2 data-i18n="h.gan.title">Carpas para terneros y ganado</h2>
+            <p class="section-lead" data-i18n="h.gan.lead">Un espacio amplio, luminoso y ventilado, montado en días y sin obra.</p>
             <dl class="points">
-              <div><dt>Luz natural</dt><dd>Lucernario cenital y ventanas laterales para un interior claro durante el día.</dd></div>
-              <div><dt>Ventilación</dt><dd>Rejillas en los testeros y ventanas practicables para renovar el aire.</dd></div>
-              <div><dt>Sin pilares interiores</dt><dd>El arco deja toda la superficie libre para corrales, comederos y paso de maquinaria.</dd></div>
-              <div><dt>Ampliable</dt><dd>Añade módulos de largo cuando crezca la explotación.</dd></div>
+              <div><dt data-i18n="gan.1t">Luz natural</dt><dd data-i18n="gan.1s">Lucernario cenital y ventanas laterales para un interior claro durante el día.</dd></div>
+              <div><dt data-i18n="gan.2t">Ventilación</dt><dd data-i18n="gan.2s">Rejillas en los testeros y ventanas practicables para renovar el aire.</dd></div>
+              <div><dt data-i18n="gan.3t">Sin pilares interiores</dt><dd data-i18n="gan.3s">El arco deja toda la superficie libre para corrales, comederos y paso de maquinaria.</dd></div>
+              <div><dt data-i18n="gan.4t">Ampliable</dt><dd data-i18n="gan.4s">Añade módulos de largo cuando crezca la explotación.</dd></div>
             </dl>
-            <a href="#presupuesto" class="btn btn-outline" data-usecase="Agricultura / ganadería">Presupuesto para mi explotación</a>
+            <a href="#presupuesto" class="btn btn-outline" data-usecase="Agricultura / ganadería" data-i18n="gan.cta">Presupuesto para mi explotación</a>
           </div>
         </div>
       </section>
@@ -256,37 +263,34 @@
       <section class="tecnica" id="tecnica">
         <div class="wrap tecnica-grid">
           <div>
-            <h2>Ingeniería detrás de cada carpa</h2>
-            <p class="section-lead">No vendemos una caja: dimensionamos la estructura para el sitio donde va a estar y te lo dejamos por escrito.</p>
+            <h2 data-i18n="h.tec.title">Ingeniería detrás de cada carpa</h2>
+            <p class="section-lead" data-i18n="tec.lead">No vendemos una caja: dimensionamos la estructura para el sitio donde va a estar y te lo dejamos por escrito.</p>
             <dl class="points points-dark">
-              <div><dt>Cálculo según Eurocódigo</dt><dd>Cargas de nieve (EN 1991-1-3) y viento (EN 1991-1-4) según la ubicación de tu obra.</dd></div>
-              <div><dt>Documentación técnica</dt><dd>Planos y memoria de cálculo de la estructura para tu expediente.</dd></div>
-              <div><dt>Materiales</dt><dd>Perfiles metálicos de alta resistencia y lona técnica de PVC.</dd></div>
+              <div><dt data-i18n="tec.1t">Cálculo según Eurocódigo</dt><dd data-i18n="tec.1s">Cargas de nieve (EN 1991-1-3) y viento (EN 1991-1-4) según la ubicación de tu obra.</dd></div>
+              <div><dt data-i18n="tec.2t">Documentación técnica</dt><dd data-i18n="tec.2s">Planos y memoria de cálculo de la estructura para tu expediente.</dd></div>
+              <div><dt data-i18n="tec.3t">Materiales</dt><dd data-i18n="tec.3s">Perfiles metálicos de alta resistencia y lona técnica de PVC.</dd></div>
             </dl>
             <div class="permisos" id="permisos">
-              <h3>¿Y los permisos?</h3>
-              <p>
-                Depende del ayuntamiento, del uso y de si la instalación es temporal o permanente. Te decimos qué necesitas en tu caso y te facilitamos la
-                documentación técnica de la estructura para tramitarlo.
-              </p>
+              <h3 data-i18n="lic.title">¿Y los permisos?</h3>
+              <p data-i18n="lic.text">Depende del ayuntamiento, del uso y de si la instalación es temporal o permanente. Te decimos qué necesitas en tu caso y te facilitamos la documentación técnica de la estructura para tramitarlo.</p>
             </div>
           </div>
           <div class="ficha-wrap">
             <table class="ficha">
-              <caption>Configura tu carpa <span>Ficha técnica</span></caption>
+              <caption data-i18n-html="h.tec.cfg">Configura tu carpa <span>Ficha técnica</span></caption>
               <tbody>
-                <tr><th scope="row">Estructura</th><td>Acero galvanizado</td></tr>
-                <tr><th scope="row">Cubierta</th><td>Lona técnica de PVC</td></tr>
-                <tr><th scope="row">Luz libre</th><td>10 a 20 m, sin pilares interiores</td></tr>
-                <tr><th scope="row">Largo</th><td>Ampliable por módulos</td></tr>
-                <tr><th scope="row">Cargas</th><td>Nieve: EN&nbsp;1991‑1‑3<br />Viento: EN&nbsp;1991‑1‑4</td></tr>
-                <tr><th scope="row">Cerramientos</th><td>Lona, panel o mixtos</td></tr>
-                <tr><th scope="row">Accesos</th><td>Puertas enrollables o correderas</td></tr>
-                <tr><th scope="row">Extras</th><td>Canalones, iluminación, ventilación</td></tr>
-                <tr><th scope="row">Anclaje</th><td>Sobre solera de hormigón o asfalto</td></tr>
+                <tr><th scope="row" data-i18n="h.f.1t">Estructura</th><td data-i18n="h.f.1d">Acero galvanizado</td></tr>
+                <tr><th scope="row" data-i18n="h.f.2t">Cubierta</th><td data-i18n="h.f.2d">Lona técnica de PVC</td></tr>
+                <tr><th scope="row" data-i18n="h.f.3t">Luz libre</th><td data-i18n="h.f.3d">10 a 20 m, sin pilares interiores</td></tr>
+                <tr><th scope="row" data-i18n="h.f.4t">Largo</th><td data-i18n="h.f.4d">Ampliable por módulos</td></tr>
+                <tr><th scope="row" data-i18n="h.f.5t">Cargas</th><td data-i18n-html="h.f.5d">Nieve: EN&nbsp;1991‑1‑3<br />Viento: EN&nbsp;1991‑1‑4</td></tr>
+                <tr><th scope="row" data-i18n="h.f.6t">Cerramientos</th><td data-i18n="h.f.6d">Lona, panel o mixtos</td></tr>
+                <tr><th scope="row" data-i18n="h.f.7t">Accesos</th><td data-i18n="h.f.7d">Puertas enrollables o correderas</td></tr>
+                <tr><th scope="row" data-i18n="h.f.8t">Extras</th><td data-i18n="h.f.8d">Canalones, iluminación, ventilación</td></tr>
+                <tr><th scope="row" data-i18n="h.f.9t">Anclaje</th><td data-i18n="h.f.9d">Sobre solera de hormigón o asfalto</td></tr>
               </tbody>
             </table>
-            <a href="#presupuesto" class="btn btn-outline-light">Calcular mi carpa</a>
+            <a href="#presupuesto" class="btn btn-outline-light" data-i18n="h.tec.cta">Calcular mi carpa</a>
           </div>
         </div>
       </section>
@@ -294,11 +298,8 @@
       <!-- 5 · QUIÉNES SOMOS -->
       <section class="equipo reveal" id="quienes-somos">
         <div class="wrap equipo-wrap">
-          <h2>Hecha por ingenieros</h2>
-          <p class="equipo-text">
-            Cada carpa la calcula un ingeniero para el viento y la nieve del sitio donde va a estar. El mismo equipo te acompaña desde la primera
-            llamada hasta el montaje, y te deja por escrito el cálculo de tu estructura.
-          </p>
+          <h2 data-i18n="h.team.title">Hecha por ingenieros</h2>
+          <p class="equipo-text" data-i18n="h.team.text">Cada carpa la calcula un ingeniero para el viento y la nieve del sitio donde va a estar. El mismo equipo te acompaña desde la primera llamada hasta el montaje, y te deja por escrito el cálculo de tu estructura.</p>
           <!--
             TODO (más adelante): fichas de los fundadores, con foto real (WebP 600×720, img/fundador-pendiente.webp mientras tanto)
             y una frase de cada uno en primera persona:
@@ -311,31 +312,31 @@
       <!-- 6 · CÓMO TRABAJAMOS (con la frase corta grande delante) -->
       <section class="proceso" id="proceso">
         <div class="wrap">
-          <p class="frase">Montada en un día, no en meses.</p>
+          <p class="frase" data-i18n="h.proc.frase">Montada en un día, no en meses.</p>
         </div>
         <!-- Antes / después (arrastrar para comparar) -->
         <div class="wrap antes-despues reveal" id="antes-despues" data-zone="antes-despues">
           <div class="compare" id="compare" style="--pos: 50%">
-            <img src="img/masia-despues-1376.webp" srcset="img/masia-despues-800.webp 800w, img/masia-despues-1376.webp 1376w" sizes="(max-width: 1180px) 100vw, 1180px" width="1376" height="768" loading="lazy" alt="Después: carpa blanca montada junto a una masía entre olivos" />
-            <img class="compare-before" src="img/masia-antes-1376.webp" srcset="img/masia-antes-800.webp 800w, img/masia-antes-1376.webp 1376w" sizes="(max-width: 1180px) 100vw, 1180px" width="1376" height="768" loading="lazy" alt="Antes: la misma parcela vacía junto a la masía" />
-            <span class="compare-tag compare-tag-l">Antes</span>
-            <span class="compare-tag compare-tag-r">Después</span>
+            <img src="img/masia-despues-1376.webp" srcset="img/masia-despues-800.webp 800w, img/masia-despues-1376.webp 1376w" sizes="(max-width: 1180px) 100vw, 1180px" width="1376" height="768" loading="lazy" data-i18n-attr="alt:ba.altAfter" alt="Después: carpa blanca montada junto a una masía entre olivos" />
+            <img class="compare-before" src="img/masia-antes-1376.webp" srcset="img/masia-antes-800.webp 800w, img/masia-antes-1376.webp 1376w" sizes="(max-width: 1180px) 100vw, 1180px" width="1376" height="768" loading="lazy" data-i18n-attr="alt:ba.altBefore" alt="Antes: la misma parcela vacía junto a la masía" />
+            <span class="compare-tag compare-tag-l" data-i18n="ba.before">Antes</span>
+            <span class="compare-tag compare-tag-r" data-i18n="ba.after">Después</span>
             <span class="compare-handle" aria-hidden="true"></span>
-            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después" />
+            <input class="compare-range" type="range" min="0" max="100" value="50" aria-label="Comparar antes y después" data-i18n-attr="aria-label:ba.range" />
           </div>
-          <p class="compare-caption">Arrastra para comparar. Sin cimentaciones profundas ni obra civil: se ancla al terreno preparado y se monta.</p>
+          <p class="compare-caption" data-i18n="h.ba.cap">Arrastra para comparar. Sin cimentaciones profundas ni obra civil: se ancla al terreno preparado y se monta.</p>
         </div>
         <div class="wrap proceso-grid">
           <div>
-            <h2>De la idea a la carpa montada</h2>
+            <h2 data-i18n="h.proc.title">De la idea a la carpa montada</h2>
             <ol class="pasos reveal-group">
-              <li><strong>Solicitud</strong><span>Nos cuentas uso, medidas y ubicación. Con eso ya te orientamos.</span></li>
-              <li><strong>Estudio técnico</strong><span>Revisamos el emplazamiento y calculamos la estructura.</span></li>
-              <li><strong>Presupuesto cerrado</strong><span>Precio todo incluido y plazo. Lo puedes firmar online.</span></li>
-              <li><strong>Fabricación y envío</strong><span>Te informamos de cada paso: fabricación, transporte y aduana.</span></li>
-              <li><strong>Montaje y entrega</strong><span>Montamos y te entregamos la carpa lista para usar.</span></li>
+              <li><strong data-i18n="proc.1t">Solicitud</strong><span data-i18n="proc.1s">Nos cuentas uso, medidas y ubicación. Con eso ya te orientamos.</span></li>
+              <li><strong data-i18n="proc.2t">Estudio técnico</strong><span data-i18n="proc.2s">Revisamos el emplazamiento y calculamos la estructura.</span></li>
+              <li><strong data-i18n="proc.3t">Presupuesto cerrado</strong><span data-i18n="proc.3s">Precio todo incluido y plazo. Lo puedes firmar online.</span></li>
+              <li><strong data-i18n="proc.4t">Fabricación y envío</strong><span data-i18n="proc.4s">Te informamos de cada paso: fabricación, transporte y aduana.</span></li>
+              <li><strong data-i18n="proc.5t">Montaje y entrega</strong><span data-i18n="proc.5s">Montamos y te entregamos la carpa lista para usar.</span></li>
             </ol>
-            <a href="#presupuesto" class="btn btn-outline">Empezar mi solicitud</a>
+            <a href="#presupuesto" class="btn btn-outline" data-i18n="proc.cta">Empezar mi solicitud</a>
           </div>
           <figure class="proceso-photo frame">
             <img
@@ -345,7 +346,7 @@
               width="800"
               height="447"
               loading="lazy"
-              alt="Montaje en obra: una grúa coloca un arco de la estructura mientras tres operarios lo guían"
+              data-i18n-attr="alt:proc.alt" alt="Montaje en obra: una grúa coloca un arco de la estructura mientras tres operarios lo guían"
             />
           </figure>
         </div>
@@ -354,42 +355,42 @@
       <!-- 7 · PREGUNTAS FRECUENTES + CIERRE -->
       <section class="preguntas" id="preguntas">
         <div class="wrap preguntas-grid">
-          <h2>Lo que más nos preguntan</h2>
+          <h2 data-i18n="faq.title">Lo que más nos preguntan</h2>
           <div class="faq">
             <details>
-              <summary>¿Qué incluye el precio?</summary>
-              <div class="faq-a"><p>Estructura, lona, los accesorios que elijas, transporte hasta la obra y montaje. Todo queda detallado en el presupuesto.</p></div>
+              <summary data-i18n="faq.q1">¿Qué incluye el precio?</summary>
+              <div class="faq-a"><p data-i18n="faq.a1">Estructura, lona, los accesorios que elijas, transporte hasta la obra y montaje. Todo queda detallado en el presupuesto.</p></div>
             </details>
             <details>
-              <summary>¿Qué cimentación hace falta?</summary>
-              <div class="faq-a"><p>Normalmente se ancla sobre una solera de hormigón o asfalto existente. Si no la hay, te indicamos las alternativas según el terreno.</p></div>
+              <summary data-i18n="faq.q2">¿Qué cimentación hace falta?</summary>
+              <div class="faq-a"><p data-i18n="faq.a2">Normalmente se ancla sobre una solera de hormigón o asfalto existente. Si no la hay, te indicamos las alternativas según el terreno.</p></div>
             </details>
             <details>
-              <summary>¿Aguanta el viento y la nieve?</summary>
-              <div class="faq-a"><p>La estructura se calcula para las cargas de nieve y viento de tu ubicación según el Eurocódigo, y te entregamos el cálculo.</p></div>
+              <summary data-i18n="faq.q3">¿Aguanta el viento y la nieve?</summary>
+              <div class="faq-a"><p data-i18n="faq.a3">La estructura se calcula para las cargas de nieve y viento de tu ubicación según el Eurocódigo, y te entregamos el cálculo.</p></div>
             </details>
             <details>
-              <summary>¿Se puede desmontar, ampliar o trasladar?</summary>
-              <div class="faq-a"><p>Sí. Son estructuras modulares: se pueden ampliar con más módulos, desmontar o llevar a otra ubicación.</p></div>
+              <summary data-i18n="faq.q4">¿Se puede desmontar, ampliar o trasladar?</summary>
+              <div class="faq-a"><p data-i18n="faq.a4">Sí. Son estructuras modulares: se pueden ampliar con más módulos, desmontar o llevar a otra ubicación.</p></div>
             </details>
             <details>
-              <summary>¿Cuánto se tarda?</summary>
-              <div class="faq-a"><p>El plazo depende de la medida y de la fabricación, y te lo damos cerrado en el presupuesto. El montaje en obra es cuestión de días.</p></div>
+              <summary data-i18n="faq.q5">¿Cuánto se tarda?</summary>
+              <div class="faq-a"><p data-i18n="faq.a5">El plazo depende de la medida y de la fabricación, y te lo damos cerrado en el presupuesto. El montaje en obra es cuestión de días.</p></div>
             </details>
             <details>
-              <summary>¿Dónde trabajáis?</summary>
-              <div class="faq-a"><p>Principalmente en Cataluña. Si tu obra está en otra zona, consúltanos.</p></div>
+              <summary data-i18n="faq.q6">¿Dónde trabajáis?</summary>
+              <div class="faq-a"><p data-i18n="faq.a6">Principalmente en Cataluña. Si tu obra está en otra zona, consúltanos.</p></div>
             </details>
           </div>
         </div>
 
         <div class="wrap cierre" id="contacto">
           <div>
-            <p class="cierre-title">¿Hablamos de tu carpa?</p>
-            <p class="cierre-sub">Cuéntanos qué necesitas y te respondemos en 24–48 h laborables.</p>
+            <p class="cierre-title" data-i18n="h.end.title">¿Hablamos de tu carpa?</p>
+            <p class="cierre-sub" data-i18n="h.end.sub">Cuéntanos qué necesitas y te respondemos en 24–48 h laborables.</p>
           </div>
           <div class="cierre-actions">
-            <a href="#presupuesto" class="btn btn-primary">Pedir presupuesto</a>
+            <a href="#presupuesto" class="btn btn-primary" data-i18n="cta.quote">Pedir presupuesto</a>
           </div>
         </div>
       </section>
@@ -399,39 +400,51 @@
       <div class="wrap footer-grid">
         <div>
           <img src="assets/logo-blanco.svg" alt="Castelvar" width="160" height="37" loading="lazy" />
-          <p>Ingeniería, suministro y montaje de carpas industriales en Cataluña.</p>
+          <p data-i18n="h.foot.about">Ingeniería, suministro y montaje de carpas industriales en Cataluña.</p>
         </div>
         <div>
-          <h2 class="foot-h">Contacto</h2>
+          <h2 class="foot-h" data-i18n="foot.contact">Contacto</h2>
           <ul class="footer-list" id="footer-contact"></ul>
         </div>
         <div>
-          <h2 class="foot-h">Empresa</h2>
+          <h2 class="foot-h" data-i18n="foot.company">Empresa</h2>
           <ul class="footer-list" id="footer-company"></ul>
         </div>
         <div>
-          <h2 class="foot-h">Legal</h2>
+          <h2 class="foot-h" data-i18n="foot.legal">Legal</h2>
           <ul class="footer-list">
-            <li><a href="aviso-legal.html">Aviso legal</a></li>
-            <li><a href="privacidad.html">Política de privacidad</a></li>
-            <li><a href="cookies.html">Cookies</a></li>
-            <li><button type="button" class="link-btn" id="cookie-settings" hidden>Configurar cookies</button></li>
+            <li><a href="aviso-legal.html" data-i18n="foot.notice">Aviso legal</a></li>
+            <li><a href="privacidad.html" data-i18n="foot.privacy">Política de privacidad</a></li>
+            <li><a href="cookies.html" data-i18n="foot.cookies">Cookies</a></li>
+            <li><button type="button" class="link-btn" id="cookie-settings" hidden data-i18n="foot.cookieSettings">Configurar cookies</button></li>
           </ul>
         </div>
       </div>
-      <div class="wrap footer-bottom">© <span id="year"></span> Castelvar · Todos los derechos reservados</div>
+      <div class="wrap footer-bottom">
+        <span>© <span id="year"></span> Castelvar · <span data-i18n="foot.rights">Todos los derechos reservados</span></span>
+        <!-- Selector de idioma (lo monta assets/i18n.js) -->
+        <div class="lang lang-foot">
+          <button type="button" class="lang-btn" aria-haspopup="menu" aria-expanded="false">
+            <span class="lang-flag" aria-hidden="true"></span>
+            <span class="lang-name">Español</span>
+            <svg class="lang-caret" viewBox="0 0 12 12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <ul class="lang-menu" role="menu" hidden></ul>
+        </div>
+      </div>
     </footer>
 
     <!-- Barra fija en móvil: aparece al bajar de la primera pantalla -->
-    <nav class="mobile-bar" id="mobile-bar" data-zone="barra-movil" aria-label="Contacto rápido">
-      <a class="mb-primary" href="#presupuesto">Pedir presupuesto</a>
+    <nav class="mobile-bar" id="mobile-bar" data-zone="barra-movil" aria-label="Contacto rápido" data-i18n-attr="aria-label:mb.aria">
+      <a class="mb-primary" href="#presupuesto" data-i18n="cta.quote">Pedir presupuesto</a>
     </nav>
 
     <!-- WhatsApp: botón flotante abajo a la derecha. Solo aparece cuando hay número en config.js (whatsapp) -->
-    <a class="wa-float" id="wa-float" data-zone="whatsapp" hidden target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <a class="wa-float" id="wa-float" data-zone="whatsapp" hidden target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp" data-i18n-attr="aria-label:wa.aria">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path fill="currentColor" d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3Zm0 23.6c-2 0-4-.5-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6Zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5.9-1.6.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.4c.2.2 2.4 3.7 5.8 5.1 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.2-.6-.4Z"/></svg>
     </a>
 
+    <script src="assets/i18n.js" defer></script>
     <script src="assets/v2.js" defer></script>
     <!-- Medición propia sin cookies, mapa de calor y píxeles con aviso de cookies (se configuran en la app → Web) -->
     <script src="assets/medir.js" defer></script>

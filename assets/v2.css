@@ -289,6 +289,7 @@ a {
 .brand,
 .nav,
 .header-phone,
+.lang-top,
 .header-inner > .btn {
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -297,6 +298,7 @@ a {
 }
 .site-header.is-floating .nav,
 .site-header.is-floating .header-phone,
+.site-header.is-floating .lang-top,
 .site-header.is-floating .header-inner > .btn {
   transform: translateX(calc(-1 * var(--shift)));
 }
@@ -1259,8 +1261,145 @@ a {
 .footer-bottom {
   border-top: 1px solid var(--line);
   margin-top: 40px;
-  padding: 18px 0;
+  padding: 14px 0;
   font-size: 13px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 24px;
+}
+
+/* ---------- Selector de idioma (cabecera y pie; lo monta assets/i18n.js) ---------- */
+.lang {
+  position: relative;
+}
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--ink);
+  font: 500 14px/1 var(--text);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.lang-btn:hover,
+.lang-btn[aria-expanded="true"] {
+  border-color: var(--blue-300);
+  background: var(--blue-50);
+}
+.lang-btn:focus-visible,
+.lang-menu button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+.lang-flag {
+  display: inline-flex;
+  width: 22px;
+  height: 15px;
+  flex: none;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 12%);
+}
+.lang-flag svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.lang-caret {
+  width: 12px;
+  height: 12px;
+  opacity: 0.7;
+  transition: transform 0.2s;
+}
+.lang-btn[aria-expanded="true"] .lang-caret {
+  transform: rotate(180deg);
+}
+.lang-menu {
+  position: absolute;
+  right: 0;
+  bottom: calc(100% + 8px);
+  z-index: 80;
+  min-width: 180px;
+  list-style: none;
+  margin: 0;
+  padding: 6px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: 0 18px 40px -12px rgb(18 36 59 / 28%);
+}
+.lang-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 40px;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 8px;
+  background: none;
+  color: var(--ink);
+  font: 500 14px/1 var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.lang-menu button:hover {
+  background: var(--blue-50);
+}
+.lang-menu button[aria-checked="true"] {
+  font-weight: 700;
+  color: var(--blue);
+}
+.lang-menu button[aria-checked="true"]::after {
+  content: "✓";
+  margin-left: auto;
+}
+/* En la cabecera: botón compacto (bandera y código) y el menú se abre hacia abajo */
+.lang-top .lang-btn {
+  min-height: 38px;
+  padding: 0 10px;
+  border-color: transparent;
+  background: transparent;
+  font-weight: 600;
+}
+.lang-top .lang-menu {
+  top: calc(100% + 10px);
+  bottom: auto;
+}
+.site-header:not(.is-floating) .lang-top .lang-btn {
+  color: #fff;
+}
+.site-header:not(.is-floating) .lang-top .lang-btn:hover,
+.site-header:not(.is-floating) .lang-top .lang-btn[aria-expanded="true"] {
+  background: rgb(255 255 255 / 14%);
+  border-color: rgb(255 255 255 / 28%);
+}
+.site-header:not(.is-floating) .lang-top .lang-btn:focus-visible {
+  outline-color: #fff;
+}
+.lang-top {
+  margin-right: -16px; /* más cerca del botón «Pedir presupuesto» */
+}
+@media (max-width: 1080px) {
+  /* móvil y tablet: solo la bandera (el nombre del idioma va en el aria-label) */
+  .lang-top {
+    margin-left: auto;
+    margin-right: -20px;
+  }
+  .lang-top .lang-name {
+    display: none;
+  }
+  .lang-top .lang-btn {
+    gap: 6px;
+    padding: 0 8px;
+  }
 }
 
 /* ---------- Barra fija en móvil ---------- */
@@ -1456,6 +1595,10 @@ a {
   .site-header .btn-sm {
     padding: 10px 14px;
     font-size: 13.5px;
+  }
+  /* el botón de la cabecera siempre en una línea (en catalán y francés el texto es más largo) */
+  .site-header .header-inner > .btn {
+    white-space: nowrap;
   }
 
   /* Hero: foto arriba (a sangre), titular encima del cielo y el formulario a la vista */
@@ -1911,4 +2054,19 @@ body.has-ck .wa-float {
 }
 .mapa .site-header {
   position: absolute;
+}
+
+/* Móviles estrechos: logo algo más pequeño para que quepan bandera y botón en cualquier idioma */
+@media (max-width: 400px) {
+  .brand img,
+  .site-header:not(.is-floating) .logo-light {
+    width: 112px;
+  }
+  .site-header .btn-sm {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .lang-top .lang-caret {
+    display: none;
+  }
 }

@@ -11,7 +11,8 @@
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   $("#year").textContent = String(new Date().getFullYear());
 
-  // Textos en español (los mismos que assets/i18n.js; la prueba va solo en español)
+  // Textos: los da assets/i18n.js (español, catalán, francés e inglés; idioma del móvil o el elegido en el selector).
+  // Esto es solo el respaldo en español por si i18n.js no llegara a cargar.
   var ES = {
     "js.waMsg": "Hola, me interesa una carpa industrial. ¿Podéis darme información?",
     "js.respond": "te respondemos en {t}",
@@ -48,21 +49,19 @@
   });
   if (!window.I18N) {
     window.I18N = {
-      t: function (k, v) { return t(k, v); },
-      pick: pick,
+      t: function (k, vars) {
+        var s = ES[k] || k;
+        if (vars) s = s.replace(/\{(\w+)\}/g, function (_, v) { return vars[v] == null ? "" : vars[v]; });
+        return s;
+      },
+      pick: function (v) { return !v ? "" : typeof v === "string" ? v : v.es || ""; },
       lang: function () { return "es"; },
       onChange: function () {},
     };
   }
-  function t(k, vars) {
-    var s = ES[k] || k;
-    if (vars) s = s.replace(/\{(\w+)\}/g, function (_, v) { return vars[v] == null ? "" : vars[v]; });
-    return s;
-  }
-  function pick(v) {
-    if (!v) return "";
-    return typeof v === "string" ? v : v.es || "";
-  }
+  var i18n = window.I18N;
+  var t = i18n.t;
+  var pick = i18n.pick;
 
   // ---------- Contacto: teléfono y WhatsApp ----------
   // Se cambian en la app (Web → Ajustes → Contacto de la web) y llegan por /api/web/config.
@@ -73,8 +72,10 @@
   var waUrl = "";
   var email = (cfg.email || "").trim();
   var wf = $("#wa-float");
+  var waButtonOn;
 
   function applyContact(newPhone, newWa, waButton) {
+    waButtonOn = waButton;
     phone = (newPhone || "").trim();
     tel = phone.replace(/[^\d+]/g, "");
     wa = (newWa || "").replace(/\D/g, "");
@@ -111,17 +112,27 @@
         .catch(function () {});
     }
   } catch (e) {}
-  var rt = pick(cfg.responseTime);
-  if (rt) {
-    $("#response-time").textContent = t("js.respond", { t: rt });
-    $("#thanks-time").textContent = t("js.thanksTime", { t: rt });
+  // Lo que se pinta desde aquí se vuelve a pintar al cambiar de idioma
+  function renderTexts() {
+    var rt = pick(cfg.responseTime);
+    if (rt) {
+      $("#response-time").textContent = t("js.respond", { t: rt });
+      $("#thanks-time").textContent = t("js.thanksTime", { t: rt });
+    }
+    var co = cfg.company || {};
+    $("#footer-company").innerHTML =
+      [co.legalName, co.nif && "NIF " + co.nif, co.address]
+        .filter(Boolean)
+        .map(function (x) { return "<li>" + esc(x) + "</li>"; })
+        .join("") || "<li>" + esc(t("js.region")) + "</li>";
   }
-  var co = cfg.company || {};
-  $("#footer-company").innerHTML =
-    [co.legalName, co.nif && "NIF " + co.nif, co.address]
-      .filter(Boolean)
-      .map(function (x) { return "<li>" + esc(x) + "</li>"; })
-      .join("") || "<li>" + esc(t("js.region")) + "</li>";
+  renderTexts();
+  i18n.onChange(function () {
+    renderTexts();
+    applyContact(phone, wa, waButtonOn); // el mensaje de WhatsApp va en el idioma de la web
+    // un error mostrado en el idioma anterior se quita (se vuelve a validar al continuar)
+    if (status.className.indexOf("error") >= 0) clearErrors();
+  });
 
   // ---------- Aparición al hacer scroll: foto de ganadería, «Quiénes somos» y los pasos ----------
   var revealEls = document.querySelectorAll(".reveal, .reveal-group");
@@ -358,9 +369,13 @@
       key: cfg.formKey,
       consent: form.consent.checked ? "on" : "",
       t: loadedAt,
-      // la URL lleva /prueba-v2/: en la app se ve de qué versión llegó la solicitud
       page: location.href.split("#")[0].slice(0, 290),
     });
+    // Si la web se ha visto en otro idioma, se avisa en el mensaje para contestar en ese idioma
+    var langNames = { ca: "Català", fr: "Français", en: "English" };
+    if (langNames[i18n.lang()]) {
+      payload.message = ("[Idioma de la web: " + langNames[i18n.lang()] + "]\n" + (payload.message || "")).trim().slice(0, 3000);
+    }
     var btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     status.className = "form-status";
@@ -389,10 +404,10 @@
           var stepOf = { width: 2, length: 2, city: 2, province: 2, timeframe: 2 };
           var k = Object.keys(res.fields)[0];
           if (stepOf[k]) show(stepOf[k]);
-          showErrors(res.fields);
+          showErrors(localFields(res.fields));
           return;
         }
-        fail((res && res.error) || t("js.sendFail"));
+        fail((i18n.lang() === "es" && res && res.error) || t("js.sendFail"));
       })
       .catch(function () {
         fail(t("js.offline"));
@@ -402,6 +417,16 @@
       });
   });
 
+  // Errores por campo que devuelve el servidor (en español) → idioma de la web
+  function localFields(fields) {
+    if (i18n.lang() === "es") return fields;
+    var msg = { name: "js.needName", email: "js.badEmail", phone: "js.badPhone", consent: "js.needConsent", width: "js.badSize", length: "js.badSize" };
+    var out = {};
+    Object.keys(fields).forEach(function (k) {
+      out[k] = msg[k] ? t(msg[k]) : t("js.sendFail");
+    });
+    return out;
+  }
   function fail(msg) {
     status.className = "form-status error";
     status.textContent = msg;
