@@ -284,7 +284,7 @@
       page: location.href.split("#")[0].slice(0, 290),
     });
     // Si la web se ha visto en otro idioma, se avisa en el mensaje para contestar en ese idioma
-    var langNames = { ca: "Català", fr: "Français", en: "English" };
+    var langNames = { ca: "Català", fr: "Français", en: "English", de: "Deutsch" };
     var lang = i18n.lang();
     if (langNames[lang]) {
       payload.message = ("[Idioma de la web: " + langNames[lang] + "]\n" + (payload.message || "")).trim().slice(0, 3000);

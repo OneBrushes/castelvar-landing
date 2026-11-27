@@ -9,16 +9,17 @@ window.CASTELVAR = {
   phone: "", // "+34 600 000 000"
   whatsapp: "", // solo números con prefijo: "34600000000"
   email: "", // "info@castelvar.es"
-  // Los textos pueden ser una cadena (igual en todos los idiomas) o { es, ca, fr, en } (lo mismo en warranty,
+  // Los textos pueden ser una cadena (igual en todos los idiomas) o { es, ca, fr, en, de } (lo mismo en warranty,
   // stats, testimonials y projects). Si falta un idioma se usa el español.
   hours: {
     es: "Lunes a viernes, 8:00–18:00",
     ca: "De dilluns a divendres, 8:00–18:00",
     fr: "Du lundi au vendredi, 8h–18h",
     en: "Monday to Friday, 8:00–18:00",
+    de: "Montag bis Freitag, 8:00–18:00 Uhr",
   },
   // plazo de respuesta que os comprometéis a cumplir
-  responseTime: { es: "24–48 h laborables", ca: "24–48 h feineres", fr: "24 à 48 h ouvrées", en: "1–2 working days" },
+  responseTime: { es: "24–48 h laborables", ca: "24–48 h feineres", fr: "24 à 48 h ouvrées", en: "1–2 working days", de: "1–2 Werktagen" },
 
   // Datos legales (aviso legal, privacidad y pie). Obligatorios antes de hacer publicidad.
   company: {

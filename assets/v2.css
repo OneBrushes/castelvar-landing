@@ -289,7 +289,6 @@ a {
 .brand,
 .nav,
 .header-phone,
-.lang-top,
 .header-inner > .btn {
   transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -298,7 +297,6 @@ a {
 }
 .site-header.is-floating .nav,
 .site-header.is-floating .header-phone,
-.site-header.is-floating .lang-top,
 .site-header.is-floating .header-inner > .btn {
   transform: translateX(calc(-1 * var(--shift)));
 }
@@ -1270,7 +1268,7 @@ a {
   gap: 12px 24px;
 }
 
-/* ---------- Selector de idioma (cabecera y pie; lo monta assets/i18n.js) ---------- */
+/* ---------- Selector de idioma (pie; lo monta assets/i18n.js) ---------- */
 .lang {
   position: relative;
 }
@@ -1353,6 +1351,13 @@ a {
 .lang-menu button:hover {
   background: var(--blue-50);
 }
+@media (max-width: 640px) {
+  /* en el móvil el selector queda a la izquierda: el menú se abre hacia la derecha */
+  .lang-menu {
+    left: 0;
+    right: auto;
+  }
+}
 .lang-menu button[aria-checked="true"] {
   font-weight: 700;
   color: var(--blue);
@@ -1360,46 +1365,6 @@ a {
 .lang-menu button[aria-checked="true"]::after {
   content: "✓";
   margin-left: auto;
-}
-/* En la cabecera: botón compacto (bandera y código) y el menú se abre hacia abajo */
-.lang-top .lang-btn {
-  min-height: 38px;
-  padding: 0 10px;
-  border-color: transparent;
-  background: transparent;
-  font-weight: 600;
-}
-.lang-top .lang-menu {
-  top: calc(100% + 10px);
-  bottom: auto;
-}
-.site-header:not(.is-floating) .lang-top .lang-btn {
-  color: #fff;
-}
-.site-header:not(.is-floating) .lang-top .lang-btn:hover,
-.site-header:not(.is-floating) .lang-top .lang-btn[aria-expanded="true"] {
-  background: rgb(255 255 255 / 14%);
-  border-color: rgb(255 255 255 / 28%);
-}
-.site-header:not(.is-floating) .lang-top .lang-btn:focus-visible {
-  outline-color: #fff;
-}
-.lang-top {
-  margin-right: -16px; /* más cerca del botón «Pedir presupuesto» */
-}
-@media (max-width: 1080px) {
-  /* móvil y tablet: solo la bandera (el nombre del idioma va en el aria-label) */
-  .lang-top {
-    margin-left: auto;
-    margin-right: -20px;
-  }
-  .lang-top .lang-name {
-    display: none;
-  }
-  .lang-top .lang-btn {
-    gap: 6px;
-    padding: 0 8px;
-  }
 }
 
 /* ---------- Barra fija en móvil ---------- */
@@ -2056,7 +2021,7 @@ body.has-ck .wa-float {
   position: absolute;
 }
 
-/* Móviles estrechos: logo algo más pequeño para que quepan bandera y botón en cualquier idioma */
+/* Móviles estrechos: logo algo más pequeño para que el botón quepa en una línea en cualquier idioma */
 @media (max-width: 400px) {
   .brand img,
   .site-header:not(.is-floating) .logo-light {
@@ -2065,8 +2030,5 @@ body.has-ck .wa-float {
   .site-header .btn-sm {
     padding: 10px 12px;
     font-size: 13px;
-  }
-  .lang-top .lang-caret {
-    display: none;
   }
 }
